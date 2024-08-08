@@ -1,9 +1,12 @@
 package com.turktrust.eticaret.entities.concretes;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +25,9 @@ public class Markalar {
 	
 	@Column(name="Marka_Adi")
 	private String Marka_Adi;
+	
+	@OneToMany
+	private List<Urunler> urunler;
 
 	public Markalar(int id, String markaAdi) {
 		super();

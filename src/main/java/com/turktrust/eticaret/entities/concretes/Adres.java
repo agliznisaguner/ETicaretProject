@@ -4,32 +4,29 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor; 
 
 @Entity
 @Table(name="Adres")
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
 public class Adres {
 	@Id
 	@GeneratedValue
 	@Column(name="Id")
 	private int id;
 	
-	@Column(name="Musteri_Id")
-	private int Musteri_Id;
+	@ManyToOne
+	@JoinColumn(name="Musteri_Id",referencedColumnName = "Id")
+	private Musteriler musteri;
 	
 	@Column(name="Adres")
 	private String Adres;
 
-	public Adres(int id, int musteriId, String adres) {
+	public Adres(int id, Musteriler musteriId, String adres) {
 		super();
 		this.id = id;
-		Musteri_Id = musteriId;
+		musteri = musteriId;
 		Adres = adres;
 	}
 	public Adres() {}
@@ -42,12 +39,12 @@ public class Adres {
 		this.id = id;
 	}
 
-	public int getMusteriId() {
-		return Musteri_Id;
+	public Musteriler getMusteriId() {
+		return musteri;
 	}
 
-	public void setMusteriId(int musteriId) {
-		Musteri_Id = musteriId;
+	public void setMusteriId(Musteriler musteriId) {
+		musteri = musteriId;
 	}
 
 	public String getAdres() {

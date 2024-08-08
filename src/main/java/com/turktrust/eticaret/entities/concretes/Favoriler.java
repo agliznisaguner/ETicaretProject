@@ -1,10 +1,11 @@
 package com.turktrust.eticaret.entities.concretes;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,17 +22,19 @@ public class Favoriler {
 	@Column(name="Id")
 	private int id;
 	
-	@Column(name="Urun_Id")
-	private int Urun_Id;
+	@ManyToOne
+	@JoinColumn(name="Urun_Id",referencedColumnName = "Id")
+	private Urunler Urun;
 	
-	@Column(name="Musteri_Id")
-	private int Musteri_Id;
+	@ManyToOne
+	@JoinColumn(name="Musteri_Id",referencedColumnName = "Id")
+	private Musteriler Musteri;
 
-	public Favoriler(int id, int urunId, int musteriId) {
+	public Favoriler(int id, Urunler urun, Musteriler musteri) {
 		super();
 		this.id = id;
-		Urun_Id = urunId;
-		Musteri_Id = musteriId;
+		Urun = urun;
+		Musteri = musteri;
 	}
 
 	public Favoriler() {}
@@ -44,19 +47,20 @@ public class Favoriler {
 		this.id = id;
 	}
 
-	public int getUrunId() {
-		return Urun_Id;
+	public Urunler getUrun() {
+		return Urun;
 	}
 
-	public void setUrunId(int urunId) {
-		Urun_Id = urunId;
+	public void setUrun(Urunler urun) {
+		Urun = urun;
 	}
 
-	public int getMusteriId() {
-		return Musteri_Id;
+	public Musteriler getMusteri() {
+		return Musteri;
 	}
 
-	public void setMusteriId(int musteriId) {
-		Musteri_Id = musteriId;
+	public void setMusteri(Musteriler musteri) {
+		Musteri = musteri;
 	}
+
 }

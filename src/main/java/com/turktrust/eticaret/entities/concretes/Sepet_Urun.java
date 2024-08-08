@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,18 +22,21 @@ public class Sepet_Urun {
 	@Column(name="Id")
 	private int id;
 	
+	@ManyToOne
 	@JoinColumn(name = "Sepet_Id", referencedColumnName = "Id")
-	private int Sepet_Id;
+	private Sepet sepet;
 	
+	@ManyToOne
 	@JoinColumn(name = "Urun_Id", referencedColumnName = "Id")
-	private int Urun_Id;
+	private Urunler Urun;
 	
-	public Sepet_Urun(int id, int sepet_Id, int urun_Id) {
+	public Sepet_Urun(int id, Sepet sepet, Urunler urun) {
 		super();
 		this.id = id;
-		Sepet_Id = sepet_Id;
-		Urun_Id = urun_Id;
+		this.sepet = sepet;
+		Urun = urun;
 	}
+
 	public Sepet_Urun() {}
 
 	public int getId() {
@@ -43,20 +47,22 @@ public class Sepet_Urun {
 		this.id = id;
 	}
 
-	public int getSepet_Id() {
-		return Sepet_Id;
+	public Sepet getSepet() {
+		return sepet;
 	}
 
-	public void setSepet_Id(int sepet_Id) {
-		Sepet_Id = sepet_Id;
+	public void setSepet(Sepet sepet) {
+		this.sepet = sepet;
 	}
 
-	public int getUrun_Id() {
-		return Urun_Id;
+	public Urunler getUrun() {
+		return Urun;
 	}
 
-	public void setUrun_Id(int urun_Id) {
-		Urun_Id = urun_Id;
+	public void setUrun(Urunler urun) {
+		Urun = urun;
 	}
+
+	
 
 }

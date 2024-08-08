@@ -4,6 +4,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,19 +22,19 @@ public class Fiyat {
 	@Column(name="Id")
 	private int id;
 	
-	@Column(name="Urun_Id")
-	private int Urun_Id;
+	@ManyToOne
+	@JoinColumn(name="Urun_Id",referencedColumnName = "Id" )
+	private Urunler urun;
 	
 	@Column(name="Urun_Fiyat")
 	private int Urun_Fiyat;
 
-	public Fiyat(int id, int urunId, int urunFiyat) {
+	public Fiyat(int id, Urunler urun, int urun_Fiyat) {
 		super();
 		this.id = id;
-		Urun_Id = urunId;
-		Urun_Fiyat = urunFiyat;
+		this.urun = urun;
+		Urun_Fiyat = urun_Fiyat;
 	}
-
 	public Fiyat() {}
 	public int getId() {
 		return id;
@@ -41,21 +43,19 @@ public class Fiyat {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public int getUrunId() {
-		return Urun_Id;
+	public Urunler getUrun() {
+		return urun;
 	}
-
-	public void setUrunId(int urunId) {
-		Urun_Id = urunId;
+	public void setUrun(Urunler urun) {
+		this.urun = urun;
 	}
-
-	public int getUrunFiyat() {
+	public int getUrun_Fiyat() {
 		return Urun_Fiyat;
 	}
-
-	public void setUrunFiyat(int urunFiyat) {
-		Urun_Fiyat = urunFiyat;
+	public void setUrun_Fiyat(int urun_Fiyat) {
+		Urun_Fiyat = urun_Fiyat;
 	}
+
+	
 	
 }

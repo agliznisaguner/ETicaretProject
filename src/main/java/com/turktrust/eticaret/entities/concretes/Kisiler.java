@@ -1,5 +1,7 @@
 package com.turktrust.eticaret.entities.concretes;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
@@ -27,37 +29,46 @@ public class Kisiler extends Musteriler{
 	
 	@Column(name="Tckimlik_No")
 	private int Tckimlik_No;
-	
-	public Kisiler(int musteriId, String ad, String soyad, int tcKimlikNo, int id, int musteriNo,int siparisId ) {
-		super(id, musteriNo, siparisId);
-		Musteri_Id = musteriId;
+
+	public Kisiler(int id, int musteri_No, List<Adres> adresler, List<Siparisler> siparisler, Sepet sepet,
+			int musteri_Id, String ad, String soyad, int tckimlik_No) {
+		super(id, musteri_No, adresler, siparisler, sepet);
+		Musteri_Id = musteri_Id;
 		Ad = ad;
 		Soyad = soyad;
-		Tckimlik_No = tcKimlikNo;
+		Tckimlik_No = tckimlik_No;
 	}
-	public int getMusteriId() {
+
+	public int getMusteri_Id() {
 		return Musteri_Id;
 	}
-	public void setMusteriId(int musteriId) {
-		Musteri_Id = musteriId;
+
+	public void setMusteri_Id(int musteri_Id) {
+		Musteri_Id = musteri_Id;
 	}
+
 	public String getAd() {
 		return Ad;
 	}
+
 	public void setAd(String ad) {
 		Ad = ad;
 	}
+
 	public String getSoyad() {
 		return Soyad;
 	}
+
 	public void setSoyad(String soyad) {
 		Soyad = soyad;
 	}
-	public int getTcKimlikNo() {
+
+	public int getTckimlik_No() {
 		return Tckimlik_No;
 	}
-	public void setTcKimlikNo(int tcKimlikNo) {
-		Tckimlik_No = tcKimlikNo;
+
+	public void setTckimlik_No(int tckimlik_No) {
+		Tckimlik_No = tckimlik_No;
 	}
 	
 	

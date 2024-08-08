@@ -15,9 +15,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name="Sepet_Urun")
-
+@Table(name="Urun_Siparis")
 public class Urun_Siparis {
+
 	@Id
 	@GeneratedValue
 	@Column(name="Id")
@@ -25,20 +25,22 @@ public class Urun_Siparis {
 	
 	@ManyToOne
 	@JoinColumn(name = "Siparis_Id",referencedColumnName = "Id")
-	private int Siparis_Id;
+	private Siparisler siparisler;
 	
 	@ManyToOne
-	@JoinColumn(name = "Urun_Id", referencedColumnName = "Id")
-	private int Urun_Id;
+	@JoinColumn(name = "Urunler_Id",referencedColumnName = "Id")
+	private Urunler urunler;
+		
 
-	public Urun_Siparis(int id, int siparis_Id, int urun_Id) {
+	public Urun_Siparis(int id, Siparisler siparisler, Urunler urunler) {
 		super();
 		this.id = id;
-		Siparis_Id = siparis_Id;
-		Urun_Id = urun_Id;
+		this.siparisler = siparisler;
+		this.urunler = urunler;
 	}
-	public Urun_Siparis() {}
 
+	public Urun_Siparis() {}
+	
 	public int getId() {
 		return id;
 	}
@@ -47,20 +49,25 @@ public class Urun_Siparis {
 		this.id = id;
 	}
 
-	public int getSiparis_Id() {
-		return Siparis_Id;
+	public Siparisler getSiparisler() {
+		return siparisler;
 	}
 
-	public void setSiparis_Id(int siparis_Id) {
-		Siparis_Id = siparis_Id;
+	public void setSiparisler(Siparisler siparisler) {
+		this.siparisler = siparisler;
 	}
 
-	public int getUrun_Id() {
-		return Urun_Id;
+	public Urunler getUrunler() {
+		return urunler;
 	}
 
-	public void setUrun_Id(int urun_Id) {
-		Urun_Id = urun_Id;
+	public void setUrunler(Urunler urunler) {
+		this.urunler = urunler;
 	}
+
+
+	
+
+	
 
 }

@@ -1,10 +1,14 @@
 package com.turktrust.eticaret.entities.concretes;
 
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,16 +26,22 @@ public class Sepet {
 	@Column(name="Id")
 	private int id;
 	
-	@Column(name="Musteri_Id")
-	private int Musteri_Id;
-
-	public Sepet(int id, int musteriId) {
-		super();
-		this.id = id;
-		Musteri_Id = musteriId;
-	}
+	@OneToMany
+	private List<Urunler> urunler;
+	
+	//bi-directional mapping
+	@OneToOne
+	private Musteriler musteri;
 
 	public Sepet() {}
+
+	public Sepet(int id, List<Urunler> urunler, Musteriler musteri) {
+		super();
+		this.id = id;
+		this.urunler = urunler;
+		this.musteri = musteri;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -40,11 +50,21 @@ public class Sepet {
 		this.id = id;
 	}
 
-	public int getMusteriId() {
-		return Musteri_Id;
+	public List<Urunler> getUrunler() {
+		return urunler;
 	}
 
-	public void setMusteriId(int musteriId) {
-		Musteri_Id = musteriId;
+	public void setUrunler(List<Urunler> urunler) {
+		this.urunler = urunler;
 	}
+
+	public Musteriler getMusteri() {
+		return musteri;
+	}
+
+	public void setMusteri(Musteriler musteri) {
+		this.musteri = musteri;
+	}
+	
+	
 }

@@ -1,9 +1,14 @@
 package com.turktrust.eticaret.entities.concretes;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,18 +25,24 @@ public class Siparisler {
 	@Column(name="Id")
 	private int id;
 	
-	@Column(name="MusteriId")
-	private int MusteriId;
+	@ManyToOne
+	@JoinColumn(name="Musteri_Id", referencedColumnName = "Id")
+	private Musteriler musteri;
 	
-	@Column(name="SiparisDetay")
-	private String SiparisDetay;
+	@Column(name="Siparis_Detay")
+	private String Siparis_Detay;
+	
+	@OneToMany
+	private List<Urunler> urunler;
 
-	public Siparisler(int id, int musteriId, String siparisDetay) {
+	public Siparisler(int id, Musteriler musteriId, String siparisDetay, List<Urunler> urunler) {
 		super();
 		this.id = id;
-		MusteriId = musteriId;
-		SiparisDetay = siparisDetay;
+		musteri = musteriId;
+		Siparis_Detay = siparisDetay;
+		this.urunler = urunler;
 	}
+
 	public Siparisler() {}
 
 	public int getId() {
@@ -42,20 +53,29 @@ public class Siparisler {
 		this.id = id;
 	}
 
-	public int getMusteriId() {
-		return MusteriId;
+	public Musteriler getMusteriId() {
+		return musteri;
 	}
 
-	public void setMusteriId(int musteriId) {
-		MusteriId = musteriId;
+	public void setMusteriId(Musteriler musteriId) {
+		musteri = musteriId;
 	}
 
 	public String getSiparisDetay() {
-		return SiparisDetay;
+		return Siparis_Detay;
 	}
 
 	public void setSiparisDetay(String siparisDetay) {
-		SiparisDetay = siparisDetay;
+		Siparis_Detay = siparisDetay;
 	}
+
+	public List<Urunler> getUrunler() {
+		return urunler;
+	}
+
+	public void setUrunler(List<Urunler> urunler) {
+		this.urunler = urunler;
+	}
+
 
 }
