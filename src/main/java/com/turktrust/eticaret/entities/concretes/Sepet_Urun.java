@@ -3,6 +3,7 @@ package com.turktrust.eticaret.entities.concretes;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -15,36 +16,37 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name="Sepet_Urun")
+@Table(name="sepet_urun")
 public class Sepet_Urun {
+	
 	@Id
-	@GeneratedValue
-	@Column(name="Id")
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="sepet_urun_id",nullable = false)
+	private int sepet_urun_id;
 	
 	@ManyToOne
-	@JoinColumn(name = "Sepet_Id", referencedColumnName = "Id")
+	@JoinColumn(name = "sepet_id",referencedColumnName = "sepet_id")
 	private Sepet sepet;
 	
 	@ManyToOne
-	@JoinColumn(name = "Urun_Id", referencedColumnName = "Id")
-	private Urunler Urun;
+	@JoinColumn(name = "urun_id",referencedColumnName = "urun_id")
+	private Urunler urun;
 	
 	public Sepet_Urun(int id, Sepet sepet, Urunler urun) {
 		super();
-		this.id = id;
+		this.sepet_urun_id = id;
 		this.sepet = sepet;
-		Urun = urun;
+		this.urun = urun;
 	}
 
 	public Sepet_Urun() {}
 
 	public int getId() {
-		return id;
+		return sepet_urun_id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.sepet_urun_id = id;
 	}
 
 	public Sepet getSepet() {
@@ -56,11 +58,11 @@ public class Sepet_Urun {
 	}
 
 	public Urunler getUrun() {
-		return Urun;
+		return urun;
 	}
 
 	public void setUrun(Urunler urun) {
-		Urun = urun;
+		this.urun = urun;
 	}
 
 	

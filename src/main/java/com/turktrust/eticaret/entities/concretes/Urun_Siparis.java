@@ -3,6 +3,7 @@ package com.turktrust.eticaret.entities.concretes;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -15,54 +16,54 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name="Urun_Siparis")
+@Table(name="urun_siparis")
 public class Urun_Siparis {
 
 	@Id
-	@GeneratedValue
-	@Column(name="Id")
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="urun_siparis_id",nullable = false)
+	private int urun_siparis_id;
 	
 	@ManyToOne
-	@JoinColumn(name = "Siparis_Id",referencedColumnName = "Id")
-	private Siparisler siparisler;
+	@JoinColumn(name = "siparis_id",referencedColumnName = "siparis_id")
+	private Siparisler siparis;
 	
 	@ManyToOne
-	@JoinColumn(name = "Urunler_Id",referencedColumnName = "Id")
-	private Urunler urunler;
+	@JoinColumn(name = "urun_id	",referencedColumnName = "urun_id")
+	private Urunler urun;
 		
 
 	public Urun_Siparis(int id, Siparisler siparisler, Urunler urunler) {
 		super();
-		this.id = id;
-		this.siparisler = siparisler;
-		this.urunler = urunler;
+		this.urun_siparis_id = id;
+		this.siparis = siparisler;
+		this.urun = urunler;
 	}
 
 	public Urun_Siparis() {}
 	
 	public int getId() {
-		return id;
+		return urun_siparis_id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.urun_siparis_id = id;
 	}
 
 	public Siparisler getSiparisler() {
-		return siparisler;
+		return siparis;
 	}
 
 	public void setSiparisler(Siparisler siparisler) {
-		this.siparisler = siparisler;
+		this.siparis = siparisler;
 	}
 
 	public Urunler getUrunler() {
-		return urunler;
+		return urun;
 	}
 
 	public void setUrunler(Urunler urunler) {
-		this.urunler = urunler;
+		this.urun = urunler;
 	}
 
 

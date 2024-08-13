@@ -5,6 +5,7 @@ import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -13,54 +14,54 @@ import lombok.Data;
 import lombok.NoArgsConstructor; 
 
 @Entity
-@Table(name="Kategoriler")
+@Table(name="kategori")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Kategori {
 
 	@Id
-	@GeneratedValue
-	@Column(name="Id")
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="kategori_id",nullable = false)
+	private int kategori_id;
 	
-	@Column(name="Kategori_Adi")
-	private String Kategori_Adi;
+	@Column(name="kategori_adi")
+	private String kategori_adi;
 	
-	@OneToMany
-	private List<Urunler> urunler;
+	@OneToMany(mappedBy = "kategori")
+	private List<Urunler> urun;
 
 
-	public Kategori(int id, String kategori_Adi, List<Urunler> urunler) {
+	public Kategori(int kategoriId, String kategori_Adi, List<Urunler> urunlers) {
 		super();
-		this.id = id;
-		Kategori_Adi = kategori_Adi;
-		this.urunler = urunler;
+		this.kategori_id = kategoriId;
+		this.kategori_adi = kategori_Adi;
+		this.urun = urunlers;
 	}
 
 	public Kategori() {}
 	
 	public int getId() {
-		return id;
+		return kategori_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int kategoriId) {
+		this.kategori_id = kategoriId;
 	}
 
-	public void setKategoriAdi(String kategoriAdi) {
-		Kategori_Adi = kategoriAdi;
+	public void setKategori_Adi(String kategoriAdi) {
+		this.kategori_adi = kategoriAdi;
 	}
 
 	public String getKategori_Adi() {
-		return Kategori_Adi;
+		return kategori_adi;
 	}
 
 	public List<Urunler> getUrunler() {
-		return urunler;
+		return urun;
 	}
 
 	public void setUrunler(List<Urunler> urunler) {
-		this.urunler = urunler;
+		this.urun = urunler;
 	}
 }

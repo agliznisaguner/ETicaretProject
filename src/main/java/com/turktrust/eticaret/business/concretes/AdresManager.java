@@ -1,0 +1,39 @@
+package com.turktrust.eticaret.business.concretes;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.turktrust.eticaret.business.abstracts.AdresService;
+import com.turktrust.eticaret.core.utilities.results.DataResult;
+import com.turktrust.eticaret.core.utilities.results.Result;
+import com.turktrust.eticaret.core.utilities.results.SuccessDataResult;
+import com.turktrust.eticaret.core.utilities.results.SuccessResult;
+import com.turktrust.eticaret.dataAccess.abstracts.AdresDao;
+import com.turktrust.eticaret.entities.concretes.Adres;
+
+@Service
+public class AdresManager implements AdresService{
+	
+	private AdresDao adresDao;
+	@Autowired
+	public AdresManager(AdresDao adresDao) {
+		super();
+		this.adresDao = adresDao;
+	}
+	
+	@Override
+	public DataResult<List<Adres>> getAll() {
+		return new SuccessDataResult<List<Adres>>(this.adresDao.findAll(),"Data listelendi.");
+		
+	}
+
+	@Override
+	public Result add(Adres adres){
+		this.adresDao.save(adres);
+		return new SuccessResult("Adres eklendi.");
+	}
+
+}
+

@@ -3,6 +3,7 @@ package com.turktrust.eticaret.entities.concretes;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -12,55 +13,55 @@ import lombok.Data;
 import lombok.NoArgsConstructor; 
 
 @Entity
-@Table(name="Favoriler")
+@Table(name="favoriler")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Favoriler {
 	@Id
-	@GeneratedValue
-	@Column(name="Id")
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="favori_id",nullable = false)
+	private int favori_id;
 	
 	@ManyToOne
-	@JoinColumn(name="Urun_Id",referencedColumnName = "Id")
-	private Urunler Urun;
+	@JoinColumn(name="urun_id",referencedColumnName = "urun_id")
+	private Urunler urun;
 	
 	@ManyToOne
-	@JoinColumn(name="Musteri_Id",referencedColumnName = "Id")
-	private Musteriler Musteri;
+	@JoinColumn(name="musteri_id")
+	private Musteriler musteri;
 
 	public Favoriler(int id, Urunler urun, Musteriler musteri) {
 		super();
-		this.id = id;
-		Urun = urun;
-		Musteri = musteri;
+		this.favori_id = id;
+		this.urun = urun;
+		this.musteri = musteri;
 	}
 
 	public Favoriler() {}
 	
 	public int getId() {
-		return id;
+		return favori_id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.favori_id = id;
 	}
 
 	public Urunler getUrun() {
-		return Urun;
+		return urun;
 	}
 
 	public void setUrun(Urunler urun) {
-		Urun = urun;
+		this.urun = urun;
 	}
 
 	public Musteriler getMusteri() {
-		return Musteri;
+		return musteri;
 	}
 
 	public void setMusteri(Musteriler musteri) {
-		Musteri = musteri;
+		this.musteri = musteri;
 	}
 
 }

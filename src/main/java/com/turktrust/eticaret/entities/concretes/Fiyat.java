@@ -3,6 +3,7 @@ package com.turktrust.eticaret.entities.concretes;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -12,36 +13,36 @@ import lombok.Data;
 import lombok.NoArgsConstructor; 
 
 @Entity
-@Table(name="Fiyat")
+@Table(name="fiyat")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Fiyat {
 	@Id
-	@GeneratedValue
-	@Column(name="Id")
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="fiyat_id",nullable = false)
+	private int fiyat_id;
 	
 	@ManyToOne
-	@JoinColumn(name="Urun_Id",referencedColumnName = "Id" )
+	@JoinColumn(name="urun_id",referencedColumnName = "urun_id")
 	private Urunler urun;
 	
-	@Column(name="Urun_Fiyat")
-	private int Urun_Fiyat;
+	@Column(name="urun_fiyat")
+	private int urun_fiyat;
 
 	public Fiyat(int id, Urunler urun, int urun_Fiyat) {
 		super();
-		this.id = id;
+		this.fiyat_id = id;
 		this.urun = urun;
-		Urun_Fiyat = urun_Fiyat;
+		this.urun_fiyat = urun_Fiyat;
 	}
 	public Fiyat() {}
 	public int getId() {
-		return id;
+		return fiyat_id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.fiyat_id = id;
 	}
 	public Urunler getUrun() {
 		return urun;
@@ -50,10 +51,10 @@ public class Fiyat {
 		this.urun = urun;
 	}
 	public int getUrun_Fiyat() {
-		return Urun_Fiyat;
+		return urun_fiyat;
 	}
 	public void setUrun_Fiyat(int urun_Fiyat) {
-		Urun_Fiyat = urun_Fiyat;
+		this.urun_fiyat = urun_Fiyat;
 	}
 
 	

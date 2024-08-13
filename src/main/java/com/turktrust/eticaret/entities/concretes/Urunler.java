@@ -5,8 +5,10 @@ import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -18,67 +20,65 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name="Urunler")
+@Table(name="urunler")
 public class Urunler {
+	
 	@Id
-	@GeneratedValue
-	@Column(name="Id")
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="urun_id",nullable = false)
+	private int urun_id;
 	
 	@ManyToOne
-	@JoinColumn(name="Satici_Id",referencedColumnName = "Id")
+	@JoinColumn(name="satici_id",referencedColumnName = "satici_id")
 	private Saticilar satici;
 	
-	@Column(name="Stok_Sayisi")
-	private int Stok_Sayisi;
+	@Column(name="stok_sayisi")
+	private int stok_sayisi;
 	
 	@ManyToOne
-	@JoinColumn(name="Marka_Id",referencedColumnName = "Id")
-	private Markalar Marka;
+	@JoinColumn(name="marka_id",referencedColumnName = "marka_id")
+	private Markalar marka;
 	
 	@ManyToOne
-	@JoinColumn(name="Kategori_Id",referencedColumnName = "Id")
-	private Kategori Kategori;
+	@JoinColumn(name="kategori_id",referencedColumnName = "kategori_id")
+	private Kategori kategori;
 	
-	@Column(name="Kategori_Adi")
-	private String Kategori_Adi;
 
-	@Column(name="Urun_Adi")
-	private String Urun_Adi;
-	
-	@OneToMany(mappedBy = "urunler")
-	private List<Sepet> sepetler;
-	
-	@OneToMany(mappedBy = "urunler")
-	private List<Siparisler> siparisler;
+	@Column(name="urun_adi")
+	private String urun_adi;
 	
 	@OneToMany(mappedBy = "urun")
-	private List<Fiyat> fiyatlar;
+	private List<Fiyat> fiyat;
+	
+	@OneToMany(mappedBy = "urun")
+	private List<Favoriler> favori;
+	
+	@ManyToMany(mappedBy = "urun")
+	private List<Sepet> sepet;
+	
+	@ManyToMany(mappedBy = "urun")
+	private List<Siparisler> siparis;
 
-	public Urunler(int id, Saticilar satici, int stok_Sayisi, Markalar marka,
-			com.turktrust.eticaret.entities.concretes.Kategori kategori, String kategori_Adi, String urun_Adi,
-			List<Sepet> sepetler, List<Siparisler> siparisler, List<Fiyat> fiyatlar) {
+	public Urunler(int id, Saticilar satici, int stok_Sayisi, Markalar marka,Kategori kategori,  String urun_Adi, List<Siparisler> siparisler, List<Fiyat> fiyatlar) {
 		super();
-		this.id = id;
+		this.urun_id = id;
 		this.satici = satici;
-		Stok_Sayisi = stok_Sayisi;
-		Marka = marka;
-		Kategori = kategori;
-		Kategori_Adi = kategori_Adi;
-		Urun_Adi = urun_Adi;
-		this.sepetler = sepetler;
-		this.siparisler = siparisler;
-		this.fiyatlar = fiyatlar;
+		this.stok_sayisi = stok_Sayisi;
+		this.marka = marka;
+		this.kategori = kategori;
+		this.urun_adi = urun_Adi;
+		//this.siparis = siparisler;
+		this.fiyat = fiyatlar;
 	}
 
 	public Urunler() {}
 
 	public int getId() {
-		return id;
+		return urun_id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.urun_id = id;
 	}
 
 	public Saticilar getSatici() {
@@ -90,67 +90,51 @@ public class Urunler {
 	}
 
 	public int getStok_Sayisi() {
-		return Stok_Sayisi;
+		return stok_sayisi;
 	}
 
 	public void setStok_Sayisi(int stok_Sayisi) {
-		Stok_Sayisi = stok_Sayisi;
+		this.stok_sayisi = stok_Sayisi;
 	}
 
 	public Markalar getMarka() {
-		return Marka;
+		return marka;
 	}
 
 	public void setMarka(Markalar marka) {
-		Marka = marka;
+		this.marka = marka;
 	}
 
 	public Kategori getKategori() {
-		return Kategori;
+		return kategori;
 	}
 
 	public void setKategori(Kategori kategori) {
-		Kategori = kategori;
-	}
-
-	public String getKategori_Adi() {
-		return Kategori_Adi;
-	}
-
-	public void setKategori_Adi(String kategori_Adi) {
-		Kategori_Adi = kategori_Adi;
+		this.kategori = kategori;
 	}
 
 	public String getUrun_Adi() {
-		return Urun_Adi;
+		return urun_adi;
 	}
 
 	public void setUrun_Adi(String urun_Adi) {
-		Urun_Adi = urun_Adi;
+		this.urun_adi = urun_Adi;
 	}
 
-	public List<Sepet> getSepetler() {
-		return sepetler;
-	}
+	//public List<Siparisler> getSiparisler() {
+	//return siparis;
+	//}
 
-	public void setSepetler(List<Sepet> sepetler) {
-		this.sepetler = sepetler;
-	}
-
-	public List<Siparisler> getSiparisler() {
-		return siparisler;
-	}
-
-	public void setSiparisler(List<Siparisler> siparisler) {
-		this.siparisler = siparisler;
-	}
+	//public void setSiparisler(List<Siparisler> siparisler) {
+	//this.siparis = siparisler;
+	//}
 
 	public List<Fiyat> getFiyatlar() {
-		return fiyatlar;
+		return fiyat;
 	}
 
 	public void setFiyatlar(List<Fiyat> fiyatlar) {
-		this.fiyatlar = fiyatlar;
+		this.fiyat = fiyatlar;
 	}
 	
 	

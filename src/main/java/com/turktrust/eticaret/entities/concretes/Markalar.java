@@ -5,6 +5,7 @@ import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -13,44 +14,44 @@ import lombok.Data;
 import lombok.NoArgsConstructor; 
 
 @Entity
-@Table(name="Markalar")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Table(name="markalar")
 public class Markalar {
 	@Id
-	@GeneratedValue
-	@Column(name="Id")
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="marka_id",nullable = false)
+	private int marka_id;
 	
-	@Column(name="Marka_Adi")
-	private String Marka_Adi;
+	@Column(name="marka_adi")
+	private String marka_adi;
 	
-	@OneToMany
-	private List<Urunler> urunler;
+	@OneToMany(mappedBy = "marka")
+	private List<Urunler> urun;
 
-	public Markalar(int id, String markaAdi) {
+	public Markalar(int id, String marka_Adi) {
 		super();
-		this.id = id;
-		Marka_Adi = markaAdi;
+		this.marka_id = id;
+		this.marka_adi = marka_Adi;
 	}
 
 	public Markalar() {}
 	
 	public int getId() {
-		return id;
+		return marka_id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.marka_id = id;
 	}
 
-	public String getMarkaAdi() {
-		return Marka_Adi;
+	public String getMarka_Adi() {
+		return marka_adi;
 	}
 
-	public void setMarkaAdi(String markaAdi) {
-		Marka_Adi = markaAdi;
+	public void setMarka_Adi(String markaAdi) {
+		this.marka_adi = markaAdi;
 	}
 
 }

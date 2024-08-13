@@ -14,61 +14,61 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@PrimaryKeyJoinColumn(name = "Musteri_Id", referencedColumnName = "Id")
-@Table(name="Kisiler")
+@PrimaryKeyJoinColumn(name = "musteri_id", referencedColumnName = "musteri_id")
+@Table(name="kisiler")
 public class Kisiler extends Musteriler{
 
-	@Column(name = "Musteri_Id", insertable = false, updatable = false)
-	private int Musteri_Id;
+	@Column(name = "musteri_id", insertable = false, updatable = false,nullable = false)
+	private int musteri_id;
 	
-	@Column(name="Ad")
-	private String Ad;
+	@Column(name="ad")
+	private String ad;
 	
-	@Column(name="Soyad")
-	private String Soyad;
+	@Column(name="soyad")
+	private String soyad;
 	
-	@Column(name="Tckimlik_No")
-	private int Tckimlik_No;
+	@Column(name="tckimlik_no")
+	private int tckimlik_no;
 
-	public Kisiler(int id, int musteri_No, List<Adres> adresler, List<Siparisler> siparisler, Sepet sepet,
+	public Kisiler(int id, int musteri_No, List<Adres> adresler, List<Siparisler> siparisler, List<Sepet> sepetler,
 			int musteri_Id, String ad, String soyad, int tckimlik_No) {
-		super(id, musteri_No, adresler, siparisler, sepet);
-		Musteri_Id = musteri_Id;
-		Ad = ad;
-		Soyad = soyad;
-		Tckimlik_No = tckimlik_No;
+		super(id, musteri_No, adresler, siparisler, sepetler);
+		this.musteri_id = musteri_Id;
+		this.ad = ad;
+		this.soyad = soyad;
+		this.tckimlik_no = tckimlik_No;
 	}
 
 	public int getMusteri_Id() {
-		return Musteri_Id;
+		return musteri_id;
 	}
 
 	public void setMusteri_Id(int musteri_Id) {
-		Musteri_Id = musteri_Id;
+		this.musteri_id = musteri_Id;
 	}
 
 	public String getAd() {
-		return Ad;
+		return ad;
 	}
 
 	public void setAd(String ad) {
-		Ad = ad;
+		this.ad = ad;
 	}
 
 	public String getSoyad() {
-		return Soyad;
+		return soyad;
 	}
 
 	public void setSoyad(String soyad) {
-		Soyad = soyad;
+		this.soyad = soyad;
 	}
 
 	public int getTckimlik_No() {
-		return Tckimlik_No;
+		return tckimlik_no;
 	}
 
 	public void setTckimlik_No(int tckimlik_No) {
-		Tckimlik_No = tckimlik_No;
+		this.tckimlik_no = tckimlik_No;
 	}
 	
 	

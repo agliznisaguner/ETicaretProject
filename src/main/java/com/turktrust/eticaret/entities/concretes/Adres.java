@@ -3,40 +3,43 @@ package com.turktrust.eticaret.entities.concretes;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Adres")
+@Table(name="adres")
 public class Adres {
+	
 	@Id
-	@GeneratedValue
-	@Column(name="Id")
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="adres_id",nullable = false)
+	private int adres_id;
 	
 	@ManyToOne
-	@JoinColumn(name="Musteri_Id",referencedColumnName = "Id")
+    @JoinColumn(name="musteri_id",referencedColumnName = "musteri_id")
+	//@JoinColumn(name="musteri_id")
 	private Musteriler musteri;
 	
-	@Column(name="Adres")
-	private String Adres;
+	@Column(name="adres")
+	private String adres;
 
 	public Adres(int id, Musteriler musteriId, String adres) {
 		super();
-		this.id = id;
-		musteri = musteriId;
-		Adres = adres;
+		this.adres_id = id;
+		this.musteri = musteriId;
+		this.adres = adres;
 	}
 	public Adres() {}
 
 	public int getId() {
-		return id;
+		return adres_id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.adres_id = id;
 	}
 
 	public Musteriler getMusteriId() {
@@ -48,11 +51,11 @@ public class Adres {
 	}
 
 	public String getAdres() {
-		return Adres;
+		return adres;
 	}
 
 	public void setAdres(String adres) {
-		Adres = adres;
+		this.adres = adres;
 	}
 
 }
