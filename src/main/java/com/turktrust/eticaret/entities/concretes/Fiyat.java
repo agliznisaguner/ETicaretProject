@@ -21,28 +21,28 @@ public class Fiyat {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="fiyat_id",nullable = false)
-	private int fiyat_id;
+	private int fiyatId;
 	
 	@ManyToOne
 	@JoinColumn(name="urun_id",referencedColumnName = "urun_id")
 	private Urunler urun;
 	
 	@Column(name="urun_fiyat")
-	private int urun_fiyat;
+	private int urunFiyat;
 
 	public Fiyat(int id, Urunler urun, int urun_Fiyat) {
 		super();
-		this.fiyat_id = id;
+		this.fiyatId = id;
 		this.urun = urun;
-		this.urun_fiyat = urun_Fiyat;
+		this.urunFiyat = urun_Fiyat;
 	}
 	public Fiyat() {}
 	public int getId() {
-		return fiyat_id;
+		return fiyatId;
 	}
 
 	public void setId(int id) {
-		this.fiyat_id = id;
+		this.fiyatId = id;
 	}
 	public Urunler getUrun() {
 		return urun;
@@ -51,10 +51,10 @@ public class Fiyat {
 		this.urun = urun;
 	}
 	public int getUrun_Fiyat() {
-		return urun_fiyat;
+		return urunFiyat;
 	}
 	public void setUrun_Fiyat(int urun_Fiyat) {
-		this.urun_fiyat = urun_Fiyat;
+		this.urunFiyat = urun_Fiyat;
 	}
 
 	

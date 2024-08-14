@@ -16,7 +16,7 @@ public class Adres {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="adres_id",nullable = false)
-	private int adres_id;
+	private int adresId;
 	
 	@ManyToOne
     @JoinColumn(name="musteri_id",referencedColumnName = "musteri_id")
@@ -28,18 +28,18 @@ public class Adres {
 
 	public Adres(int id, Musteriler musteriId, String adres) {
 		super();
-		this.adres_id = id;
+		this.adresId = id;
 		this.musteri = musteriId;
 		this.adres = adres;
 	}
 	public Adres() {}
 
 	public int getId() {
-		return adres_id;
+		return adresId;
 	}
 
 	public void setId(int id) {
-		this.adres_id = id;
+		this.adresId = id;
 	}
 
 	public Musteriler getMusteriId() {

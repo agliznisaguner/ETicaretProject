@@ -2,6 +2,9 @@ package com.turktrust.eticaret.entities.concretes;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,43 +21,45 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","urunler"})
 public class Kategori {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="kategori_id",nullable = false)
-	private int kategori_id;
+	private int kategoriId;
 	
 	@Column(name="kategori_adi")
-	private String kategori_adi;
+	private String kategoriAdi;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "kategori")
 	private List<Urunler> urun;
 
 
 	public Kategori(int kategoriId, String kategori_Adi, List<Urunler> urunlers) {
 		super();
-		this.kategori_id = kategoriId;
-		this.kategori_adi = kategori_Adi;
+		this.kategoriId = kategoriId;
+		this.kategoriAdi = kategori_Adi;
 		this.urun = urunlers;
 	}
 
 	public Kategori() {}
 	
 	public int getId() {
-		return kategori_id;
+		return kategoriId;
 	}
 
 	public void setId(int kategoriId) {
-		this.kategori_id = kategoriId;
+		this.kategoriId = kategoriId;
 	}
 
 	public void setKategori_Adi(String kategoriAdi) {
-		this.kategori_adi = kategoriAdi;
+		this.kategoriAdi = kategoriAdi;
 	}
 
 	public String getKategori_Adi() {
-		return kategori_adi;
+		return kategoriAdi;
 	}
 
 	public List<Urunler> getUrunler() {

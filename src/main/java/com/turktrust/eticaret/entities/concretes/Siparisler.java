@@ -25,14 +25,14 @@ public class Siparisler {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="siparis_id",nullable = false)
-	private int siparis_id;
+	private int siparisId;
 	
 	@ManyToOne
 	@JoinColumn(name="musteri_id",referencedColumnName = "musteri_id")
 	private Musteriler musteri;
 	
 	@Column(name="siparis_detay")
-	private String siparis_detay;
+	private String siparisDetay;
 	
 	@ManyToMany
 	@JoinTable(name="urun_siparis", 
@@ -42,20 +42,20 @@ public class Siparisler {
 
 	public Siparisler(int id, Musteriler musteriId, String siparisDetay, List<Urunler> urunler) {
 		super();
-		this.siparis_id = id;
+		this.siparisId = id;
 		musteri = musteriId;
-		this.siparis_detay = siparisDetay;
+		this.siparisDetay = siparisDetay;
 		this.urun = urunler;
 	}
 
 	public Siparisler() {}
 
 	public int getId() {
-		return siparis_id;
+		return siparisId;
 	}
 
 	public void setId(int id) {
-		this.siparis_id = id;
+		this.siparisId = id;
 	}
 
 	public Musteriler getMusteriId() {
@@ -67,11 +67,11 @@ public class Siparisler {
 	}
 
 	public String getSiparisDetay() {
-		return this.siparis_detay;
+		return this.siparisDetay;
 	}
 
 	public void setSiparisDetay(String siparisDetay) {
-		siparis_detay = siparisDetay;
+		this.siparisDetay = siparisDetay;
 	}
 
 	public List<Urunler> getUrunler() {

@@ -22,7 +22,7 @@ public class Urun_Siparis {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="urun_siparis_id",nullable = false)
-	private int urun_siparis_id;
+	private int urunSiparisId;
 	
 	@ManyToOne
 	@JoinColumn(name = "siparis_id",referencedColumnName = "siparis_id")
@@ -35,7 +35,7 @@ public class Urun_Siparis {
 
 	public Urun_Siparis(int id, Siparisler siparisler, Urunler urunler) {
 		super();
-		this.urun_siparis_id = id;
+		this.urunSiparisId = id;
 		this.siparis = siparisler;
 		this.urun = urunler;
 	}
@@ -43,11 +43,11 @@ public class Urun_Siparis {
 	public Urun_Siparis() {}
 	
 	public int getId() {
-		return urun_siparis_id;
+		return urunSiparisId;
 	}
 
 	public void setId(int id) {
-		this.urun_siparis_id = id;
+		this.urunSiparisId = id;
 	}
 
 	public Siparisler getSiparisler() {

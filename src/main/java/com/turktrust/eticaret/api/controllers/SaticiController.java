@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.turktrust.eticaret.business.abstracts.SaticiService;
@@ -35,6 +36,15 @@ public class SaticiController {
 		return this.saticiService.add(satici);
 		
 	}
+	   @GetMapping("/getBySaticiAdi")
+	    public DataResult<Saticilar> getBySaticiFirmaAdi(@RequestParam String saticiFirmaAdi) {
+	        return this.saticiService.getBySaticiFirmaAdi(saticiFirmaAdi);
+	    }
+
+	    @GetMapping("/getAllByPage")
+	    public DataResult<List<Saticilar>> getAll(int pageNo, int pageSize) {
+	        return this.saticiService.getAll(pageNo, pageSize);
+	    }
 
 
 }

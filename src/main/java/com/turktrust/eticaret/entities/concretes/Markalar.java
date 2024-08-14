@@ -22,36 +22,36 @@ public class Markalar {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="marka_id",nullable = false)
-	private int marka_id;
+	private int markaId;
 	
 	@Column(name="marka_adi")
-	private String marka_adi;
+	private String markaAdi;
 	
 	@OneToMany(mappedBy = "marka")
 	private List<Urunler> urun;
 
 	public Markalar(int id, String marka_Adi) {
 		super();
-		this.marka_id = id;
-		this.marka_adi = marka_Adi;
+		this.markaId = id;
+		this.markaAdi = marka_Adi;
 	}
 
 	public Markalar() {}
 	
 	public int getId() {
-		return marka_id;
+		return markaId;
 	}
 
 	public void setId(int id) {
-		this.marka_id = id;
+		this.markaId = id;
 	}
 
 	public String getMarka_Adi() {
-		return marka_adi;
+		return markaAdi;
 	}
 
 	public void setMarka_Adi(String markaAdi) {
-		this.marka_adi = markaAdi;
+		this.markaAdi = markaAdi;
 	}
 
 }

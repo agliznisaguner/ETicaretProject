@@ -21,7 +21,7 @@ public class Favoriler {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="favori_id",nullable = false)
-	private int favori_id;
+	private int favoriId;
 	
 	@ManyToOne
 	@JoinColumn(name="urun_id",referencedColumnName = "urun_id")
@@ -33,7 +33,7 @@ public class Favoriler {
 
 	public Favoriler(int id, Urunler urun, Musteriler musteri) {
 		super();
-		this.favori_id = id;
+		this.favoriId = id;
 		this.urun = urun;
 		this.musteri = musteri;
 	}
@@ -41,11 +41,11 @@ public class Favoriler {
 	public Favoriler() {}
 	
 	public int getId() {
-		return favori_id;
+		return favoriId;
 	}
 
 	public void setId(int id) {
-		this.favori_id = id;
+		this.favoriId = id;
 	}
 
 	public Urunler getUrun() {

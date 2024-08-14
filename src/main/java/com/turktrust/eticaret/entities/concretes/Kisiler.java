@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class Kisiler extends Musteriler{
 
 	@Column(name = "musteri_id", insertable = false, updatable = false,nullable = false)
-	private int musteri_id;
+	private int musteriId;
 	
 	@Column(name="ad")
 	private String ad;
@@ -28,23 +28,23 @@ public class Kisiler extends Musteriler{
 	private String soyad;
 	
 	@Column(name="tckimlik_no")
-	private int tckimlik_no;
+	private int tckimlikNo;
 
 	public Kisiler(int id, int musteri_No, List<Adres> adresler, List<Siparisler> siparisler, List<Sepet> sepetler,
 			int musteri_Id, String ad, String soyad, int tckimlik_No) {
 		super(id, musteri_No, adresler, siparisler, sepetler);
-		this.musteri_id = musteri_Id;
+		this.musteriId = musteri_Id;
 		this.ad = ad;
 		this.soyad = soyad;
-		this.tckimlik_no = tckimlik_No;
+		this.tckimlikNo = tckimlik_No;
 	}
 
 	public int getMusteri_Id() {
-		return musteri_id;
+		return musteriId;
 	}
 
 	public void setMusteri_Id(int musteri_Id) {
-		this.musteri_id = musteri_Id;
+		this.musteriId = musteri_Id;
 	}
 
 	public String getAd() {
@@ -64,11 +64,11 @@ public class Kisiler extends Musteriler{
 	}
 
 	public int getTckimlik_No() {
-		return tckimlik_no;
+		return tckimlikNo;
 	}
 
 	public void setTckimlik_No(int tckimlik_No) {
-		this.tckimlik_no = tckimlik_No;
+		this.tckimlikNo = tckimlik_No;
 	}
 	
 	

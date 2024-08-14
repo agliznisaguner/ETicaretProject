@@ -27,7 +27,7 @@ public class Sepet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="sepet_id",nullable = false)
-	private int sepet_id;
+	private int sepetId;
 	
 	
 	@ManyToOne
@@ -45,7 +45,7 @@ public class Sepet {
 
 	public Sepet(int sepet_id, Musteriler musteri, List<Urunler> urun) {
 		super();
-		this.sepet_id = sepet_id;
+		this.sepetId = sepet_id;
 		this.musteri = musteri;
 		this.urun = urun;
 	}
@@ -53,11 +53,11 @@ public class Sepet {
 
 
 	public int getId() {
-		return sepet_id;
+		return sepetId;
 	}
 
 	public void setId(int id) {
-		this.sepet_id = id;
+		this.sepetId = id;
 	}
 
 	public Musteriler getMusteri() {

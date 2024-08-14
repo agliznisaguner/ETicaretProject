@@ -3,6 +3,8 @@ package com.turktrust.eticaret.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.turktrust.eticaret.business.abstracts.SaticiService;
@@ -35,6 +37,17 @@ public class SaticiManager implements SaticiService{
 		return new SuccessResult("Satıcı eklendi.");
 	}
 
+	@Override
+    public DataResult<Saticilar> getBySaticiFirmaAdi(String saticiFirmaAdi) {
+        return new SuccessDataResult<Saticilar>(this.saticiDao.getBySaticiFirmaAdi(saticiFirmaAdi), "Data listelendi.");
+    }
+
+
+    @Override
+    public DataResult<List<Saticilar>> getAll(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo-1, pageSize);
+        return new SuccessDataResult<List<Saticilar>>(this.saticiDao.findAll(pageable).getContent());
+    }
 
 
 }

@@ -2,6 +2,8 @@ package com.turktrust.eticaret.entities.concretes;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,19 +23,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Table(name="urunler")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Urunler {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="urun_id",nullable = false)
-	private int urun_id;
+	private int urunId;
 	
 	@ManyToOne
 	@JoinColumn(name="satici_id",referencedColumnName = "satici_id")
 	private Saticilar satici;
 	
 	@Column(name="stok_sayisi")
-	private int stok_sayisi;
+	private int stokSayisi;
 	
 	@ManyToOne
 	@JoinColumn(name="marka_id",referencedColumnName = "marka_id")
@@ -45,7 +48,7 @@ public class Urunler {
 	
 
 	@Column(name="urun_adi")
-	private String urun_adi;
+	private String urunAdi;
 	
 	@OneToMany(mappedBy = "urun")
 	private List<Fiyat> fiyat;
@@ -61,24 +64,24 @@ public class Urunler {
 
 	public Urunler(int id, Saticilar satici, int stok_Sayisi, Markalar marka,Kategori kategori,  String urun_Adi, List<Siparisler> siparisler, List<Fiyat> fiyatlar) {
 		super();
-		this.urun_id = id;
+		this.urunId = id;
 		this.satici = satici;
-		this.stok_sayisi = stok_Sayisi;
+		this.stokSayisi = stok_Sayisi;
 		this.marka = marka;
 		this.kategori = kategori;
-		this.urun_adi = urun_Adi;
-		//this.siparis = siparisler;
+		this.urunAdi = urun_Adi;
+		this.siparis = siparisler;
 		this.fiyat = fiyatlar;
 	}
 
 	public Urunler() {}
 
 	public int getId() {
-		return urun_id;
+		return urunId;
 	}
 
 	public void setId(int id) {
-		this.urun_id = id;
+		this.urunId = id;
 	}
 
 	public Saticilar getSatici() {
@@ -90,11 +93,11 @@ public class Urunler {
 	}
 
 	public int getStok_Sayisi() {
-		return stok_sayisi;
+		return stokSayisi;
 	}
 
 	public void setStok_Sayisi(int stok_Sayisi) {
-		this.stok_sayisi = stok_Sayisi;
+		this.stokSayisi = stok_Sayisi;
 	}
 
 	public Markalar getMarka() {
@@ -114,20 +117,20 @@ public class Urunler {
 	}
 
 	public String getUrun_Adi() {
-		return urun_adi;
+		return urunAdi;
 	}
 
 	public void setUrun_Adi(String urun_Adi) {
-		this.urun_adi = urun_Adi;
+		this.urunAdi = urun_Adi;
 	}
 
-	//public List<Siparisler> getSiparisler() {
-	//return siparis;
-	//}
+	public List<Siparisler> getSiparisler() {
+	return siparis;
+	}
 
-	//public void setSiparisler(List<Siparisler> siparisler) {
-	//this.siparis = siparisler;
-	//}
+	public void setSiparisler(List<Siparisler> siparisler) {
+	this.siparis = siparisler;
+	}
 
 	public List<Fiyat> getFiyatlar() {
 		return fiyat;

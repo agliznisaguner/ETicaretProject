@@ -22,7 +22,7 @@ public class Sepet_Urun {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="sepet_urun_id",nullable = false)
-	private int sepet_urun_id;
+	private int sepetUrunId;
 	
 	@ManyToOne
 	@JoinColumn(name = "sepet_id",referencedColumnName = "sepet_id")
@@ -34,7 +34,7 @@ public class Sepet_Urun {
 	
 	public Sepet_Urun(int id, Sepet sepet, Urunler urun) {
 		super();
-		this.sepet_urun_id = id;
+		this.sepetUrunId = id;
 		this.sepet = sepet;
 		this.urun = urun;
 	}
@@ -42,11 +42,11 @@ public class Sepet_Urun {
 	public Sepet_Urun() {}
 
 	public int getId() {
-		return sepet_urun_id;
+		return sepetUrunId;
 	}
 
 	public void setId(int id) {
-		this.sepet_urun_id = id;
+		this.sepetUrunId = id;
 	}
 
 	public Sepet getSepet() {

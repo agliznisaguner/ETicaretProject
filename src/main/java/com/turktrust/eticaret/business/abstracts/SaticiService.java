@@ -9,5 +9,12 @@ import com.turktrust.eticaret.entities.concretes.Saticilar;
 public interface SaticiService {
 
 	DataResult<List<Saticilar>> getAll(); 
+	 DataResult<List<Saticilar>> getAll(int pageNo, int pageSize);
     Result add(Saticilar satici);
+    
+    DataResult<Saticilar> getBySaticiFirmaAdi(String saticiFirmaAdi);
+	
+    
+
+    
 }

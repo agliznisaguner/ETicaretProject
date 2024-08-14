@@ -26,10 +26,10 @@ public class Musteriler{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="musteri_id",nullable = false)
-	private int musteri_id;
+	private int musteriId;
 	
 	@Column(name="musteri_no")
-	private int musteri_no;
+	private int musteriNo;
 	
 	@OneToMany(mappedBy = "musteri")
 	private List<Adres> adres;
@@ -45,27 +45,27 @@ public class Musteriler{
 	
 	public Musteriler(int id, int musteri_No, List<Adres> adresler, List<Siparisler> siparisler, List<Sepet> sepetler) {
 		super();
-		this.musteri_id = id;
-		this.musteri_no = musteri_No;
+		this.musteriId = id;
+		this.musteriNo = musteri_No;
 		this.adres = adresler;
 		this.siparis = siparisler;
 		this.sepet = sepetler;
 	}
 
 	public int getId() {
-		return musteri_id;
+		return musteriId;
 	}
 
 	public void setId(int id) {
-		this.musteri_id = id;
+		this.musteriId = id;
 	}
 
 	public int getMusteri_No() {
-		return musteri_no;
+		return musteriNo;
 	}
 
 	public void setMusteri_No(int musteri_No) {
-		this.musteri_no = musteri_No;
+		this.musteriNo = musteri_No;
 	}
 
 	public List<Adres> getAdresler() {
