@@ -13,11 +13,15 @@ public interface UrunDao extends JpaRepository<Urunler, Integer>{
 	
 	List<Urunler> getByUrunAdiOrKategoriId(String urunAdi, int kategoriId);
 	
-	List<Urunler> getByKategoriIn(List<Integer> categories);
+	List<Urunler> getByKategoriIdIn(List<Integer> categories);
 	
 	List<Urunler> getByUrunAdiContains(String urunAdi);
 	
 	List<Urunler> getByUrunAdiStartsWith(String urunAdi);
+	
+	List<Urunler> getByMarka_MarkaAdiIn(List<String> markaAdi);
+	
+	List<Urunler> getBySatici_SaticiFirmaAdiIn(List<String> saticiFirmaAdi);
 	
 	//@Query("From Urunler where urun_adi =:urun_adi and kategori.kategori_id=:kategori_id")
 	//List<Urunler> GetByUrun_adiAndKategori( String urun_adi, int kategori_id);

@@ -45,6 +45,10 @@ public class UrunController {
 	public DataResult<Urunler>getByUrunAdiAndKategoriId(@RequestParam("urunAdi") String urunAdi, @RequestParam("kategoriId") int kategoriId){
 		return this.urunService.getByUrunAdiAndKategoriId(urunAdi, kategoriId);
 	}
+	@GetMapping("/getByKategoriIdIn")
+    public DataResult<List<Urunler>> getByKategoriIdIn(@RequestParam List<Integer> categories) {
+        return this.urunService.getByKategoriIdIn(categories);
+    }
 	@GetMapping("/getByUrunAdiContains")
 	public DataResult<List<Urunler>> getByUrunAdiContains(@RequestParam String urunAdi){
 		return this.urunService.getByUrunAdiContains(urunAdi);
@@ -54,5 +58,15 @@ public class UrunController {
 	DataResult<List<Urunler>> getAll(int pageNo, int pageSize){
 		return this.urunService.getAll(pageNo, pageSize);
 	}
+	@GetMapping("/getByMarka_MarkaAdiIn")
+    public DataResult<List<Urunler>> getByMarka_MarkaAdiIn(@RequestParam List<String> markaAdi) {
+        return this.urunService.getByMarka_MarkaAdiIn(markaAdi);
+    }
+	@GetMapping("/getBySatici_SaticiFirmaAdiIn")
+	public DataResult<List<Urunler>> getBySatici_SaticiFirmaAdiIn(@RequestParam List<String> saticiFirmaAdi) {
+	    return this.urunService.getBySatici_SaticiFirmaAdiIn(saticiFirmaAdi);
+	}
+
+	
 
 }

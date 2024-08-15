@@ -1,6 +1,5 @@
 package com.turktrust.eticaret.dataAccess.abstracts;
 
-import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -10,7 +9,9 @@ public interface SaticiDao extends JpaRepository<Saticilar, Integer>{
 	 
 		Saticilar getBySaticiFirmaAdi(String saticiAdi);
 		
-	   
+	    Saticilar getBySaticiFirmaAdiAndUrunId(String saticiFirmaAdi, int urunId);
+	    
+	    Saticilar getBySaticiFirmaAdiOrUrunId(String saticiFirmaAdi, int urunId);
 	
 
 }

@@ -36,15 +36,24 @@ public class SaticiController {
 		return this.saticiService.add(satici);
 		
 	}
-	   @GetMapping("/getBySaticiAdi")
-	    public DataResult<Saticilar> getBySaticiFirmaAdi(@RequestParam String saticiFirmaAdi) {
-	        return this.saticiService.getBySaticiFirmaAdi(saticiFirmaAdi);
-	    }
+	@GetMapping("/getBySaticiAdi")
+    public DataResult<Saticilar> getBySaticiFirmaAdi(@RequestParam String saticiFirmaAdi) {
+        return this.saticiService.getBySaticiFirmaAdi(saticiFirmaAdi);
+    }
 
-	    @GetMapping("/getAllByPage")
-	    public DataResult<List<Saticilar>> getAll(int pageNo, int pageSize) {
-	        return this.saticiService.getAll(pageNo, pageSize);
-	    }
+	@GetMapping("/getAllByPage")
+	public DataResult<List<Saticilar>> getAll(int pageNo, int pageSize) {
+	    return this.saticiService.getAll(pageNo, pageSize);
+	}
+	@GetMapping("/getBySaticiFirmaAdiAndUrunId")
+	public DataResult<Saticilar> getBySaticiFirmaAdiAndUrunId(@RequestParam("saticiFirmaAdi") String saticiFirmaAdi, @RequestParam("urunId") int urunId) {
+	    return this.saticiService.getBySaticiFirmaAdiAndUrunId(saticiFirmaAdi, urunId);
+	}
+
+	@GetMapping("/getBySaticiFirmaAdiOrUrunId")
+	public DataResult<Saticilar> getBySaticiFirmaAdiOrUrunId(@RequestParam("saticiFirmaAdi") String saticiFirmaAdi, @RequestParam("urunId") int urunId) {
+	    return this.saticiService.getBySaticiFirmaAdiOrUrunId(saticiFirmaAdi, urunId);
+	}
 
 
 }

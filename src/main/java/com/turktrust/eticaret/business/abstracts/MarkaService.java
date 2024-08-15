@@ -11,4 +11,10 @@ public interface MarkaService {
 
 	DataResult<List<Markalar>> getAll(); 
     Result add(Markalar marka);
+    
+    DataResult<Markalar> getByMarkaAdi(String markaAdi);
+    
+    DataResult<Markalar> getByMarkaAdiOrUrunId(String markaAdi, int urunAdi);
+    
+    DataResult<List<Markalar>> getByUrunIdIn(List<Integer> urunler);
 }

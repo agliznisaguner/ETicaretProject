@@ -49,5 +49,15 @@ public class SaticiManager implements SaticiService{
         return new SuccessDataResult<List<Saticilar>>(this.saticiDao.findAll(pageable).getContent());
     }
 
+	@Override
+	public DataResult<Saticilar> getBySaticiFirmaAdiAndUrunId(String saticiFirmaAdi, int urunId) {
+		return new SuccessDataResult<Saticilar>(this.saticiDao.getBySaticiFirmaAdiAndUrunId(saticiFirmaAdi, urunId), "Data listelendi.");
+	}
+
+	@Override
+	public DataResult<Saticilar> getBySaticiFirmaAdiOrUrunId(String saticiFirmaAdi, int urunId) {
+		return new SuccessDataResult<Saticilar>(this.saticiDao.getBySaticiFirmaAdiOrUrunId(saticiFirmaAdi, urunId), "Data listelendi.");
+	}
+
 
 }

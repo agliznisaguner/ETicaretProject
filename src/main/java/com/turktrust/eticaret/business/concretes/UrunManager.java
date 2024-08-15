@@ -52,7 +52,7 @@ public class UrunManager implements UrunService {
 
 	@Override
 	public DataResult<List<Urunler>> getByKategoriIdIn(List<Integer> categories) {
-		return new SuccessDataResult<List<Urunler>>(this.urunDao.getByKategoriIn(categories),"Data listelendi.");
+		return new SuccessDataResult<List<Urunler>>(this.urunDao.getByKategoriIdIn(categories),"Data listelendi.");
 	}
 
 	@Override
@@ -69,6 +69,16 @@ public class UrunManager implements UrunService {
 		Pageable pageable = PageRequest.of(pageNo-1, pageSize);
 		return new SuccessDataResult<List<Urunler>>(this.urunDao.findAll(pageable).getContent());
 	}
+	@Override
+	public DataResult<List<Urunler>> getByMarka_MarkaAdiIn(List<String> markaAdi) {
+		
+		return new SuccessDataResult<List<Urunler>>(this.urunDao.getByMarka_MarkaAdiIn(markaAdi),"Data listelendi.");
+	}
+	@Override
+	public DataResult<List<Urunler>> getBySatici_SaticiFirmaAdiIn(List<String> saticiFirmaAdi) {
+	    return new SuccessDataResult<List<Urunler>>(this.urunDao.getBySatici_SaticiFirmaAdiIn(saticiFirmaAdi), "Data listelendi.");
+	}
+
 
 	//@Override
 	//public DataResult<List<Urunler>> GetByNameAndCategory(String urun_adi, int kategori_id) {
