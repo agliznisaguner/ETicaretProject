@@ -14,6 +14,7 @@ import com.turktrust.eticaret.core.utilities.results.SuccessDataResult;
 import com.turktrust.eticaret.core.utilities.results.SuccessResult;
 import com.turktrust.eticaret.dataAccess.abstracts.UrunDao;
 import com.turktrust.eticaret.entities.concretes.Urunler;
+import com.turktrust.eticaret.entities.dtos.UrunWithKategoriDto;
 
 @Service
 public class UrunManager implements UrunService {
@@ -77,6 +78,10 @@ public class UrunManager implements UrunService {
 	@Override
 	public DataResult<List<Urunler>> getBySatici_SaticiFirmaAdiIn(List<String> saticiFirmaAdi) {
 	    return new SuccessDataResult<List<Urunler>>(this.urunDao.getBySatici_SaticiFirmaAdiIn(saticiFirmaAdi), "Data listelendi.");
+	}
+	@Override
+	public DataResult<List<UrunWithKategoriDto>> getUrunWithKategoriDetails() {
+		return new SuccessDataResult<List<UrunWithKategoriDto>>(this.urunDao.getUrunWithKategoriDetails(),"Data listelendi");
 	}
 
 

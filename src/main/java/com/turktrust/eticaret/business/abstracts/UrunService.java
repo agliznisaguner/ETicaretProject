@@ -5,6 +5,7 @@ import java.util.List;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.entities.concretes.Urunler;
+import com.turktrust.eticaret.entities.dtos.UrunWithKategoriDto;
 
 public interface UrunService {
 	
@@ -28,7 +29,7 @@ public interface UrunService {
     
     DataResult<List<Urunler>> getBySatici_SaticiFirmaAdiIn(List<String> saticiFirmaAdi);
 
-    
+    DataResult<List<UrunWithKategoriDto>> getUrunWithKategoriDetails();
 	
     //DataResult<List<Urunler>> GetByNameAndCategory(String urun_adi, int kategori_id);
 

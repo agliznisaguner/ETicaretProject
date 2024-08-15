@@ -3,7 +3,10 @@ package com.turktrust.eticaret.dataAccess.abstracts;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
 import com.turktrust.eticaret.entities.concretes.Urunler;
+import com.turktrust.eticaret.entities.dtos.UrunWithKategoriDto;
 
 public interface UrunDao extends JpaRepository<Urunler, Integer>{
 
@@ -26,5 +29,7 @@ public interface UrunDao extends JpaRepository<Urunler, Integer>{
 	//@Query("From Urunler where urun_adi =:urun_adi and kategori.kategori_id=:kategori_id")
 	//List<Urunler> GetByUrun_adiAndKategori( String urun_adi, int kategori_id);
 	
+	@Query("Select new com.turktrust.eticaret.entities.dtos.UrunWithKategoriDto(p.urunId,p.urunAdi,c.kategoriAdi) From Kategori c Inner Join c.urun p")
+	List<UrunWithKategoriDto> getUrunWithKategoriDetails();
 }
  
