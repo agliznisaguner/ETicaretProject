@@ -30,14 +30,17 @@ public class Kisiler extends Musteriler{
 	@Column(name="tckimlik_no")
 	private int tckimlikNo;
 
-	public Kisiler(int id, int musteri_No, List<Adres> adresler, List<Siparisler> siparisler, List<Sepet> sepetler,
+	public Kisiler(int id, int musteri_No, List<Adres> adresler, List<Siparisler> siparisler, List<Sepet> sepetler,List<Favoriler> favori,
+			String email, String password,
 			int musteri_Id, String ad, String soyad, int tckimlik_No) {
-		super(id, musteri_No, adresler, siparisler, sepetler);
+		super(id, musteri_No, adresler, siparisler, sepetler,favori, email, password);
 		this.musteriId = musteri_Id;
 		this.ad = ad;
 		this.soyad = soyad;
 		this.tckimlikNo = tckimlik_No;
 	}
+	public Kisiler() {}
+	
 
 	public int getMusteri_Id() {
 		return musteriId;

@@ -35,4 +35,9 @@ public class MusteriManager implements MusteriService{
 		this.musteriDao.save(musteri);
 		return new SuccessResult("Musteri eklendi.");
 	}
+
+	@Override
+	public DataResult<Musteriler> findByEmail(String email) {
+		return new SuccessDataResult<Musteriler>(this.musteriDao.findByEmail(email),"Musteri listelendi.");
+	}
 }

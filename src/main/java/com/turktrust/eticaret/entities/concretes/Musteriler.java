@@ -11,6 +11,9 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -43,14 +46,31 @@ public class Musteriler{
 	@OneToMany(mappedBy= "musteri")
 	private List<Favoriler> favori;
 	
-	public Musteriler(int id, int musteri_No, List<Adres> adresler, List<Siparisler> siparisler, List<Sepet> sepetler) {
+	@Column(name = "email", unique = true, nullable = false)
+	@Email
+	@NotBlank
+	@NotNull
+	private String email;
+	
+	@Column(name = "password", nullable = false)
+	@NotBlank
+	@NotNull
+	private String password;
+	
+
+	public Musteriler(int musteriId, int musteriNo, List<Adres> adres, List<Siparisler> siparis, List<Sepet> sepet,
+			List<Favoriler> favori, String email, String password) {
 		super();
-		this.musteriId = id;
-		this.musteriNo = musteri_No;
-		this.adres = adresler;
-		this.siparis = siparisler;
-		this.sepet = sepetler;
+		this.musteriId = musteriId;
+		this.musteriNo = musteriNo;
+		this.adres = adres;
+		this.siparis = siparis;
+		this.sepet = sepet;
+		this.favori = favori;
+		this.email = email;
+		this.password = password;
 	}
+	public Musteriler() {}
 
 	public int getId() {
 		return musteriId;
@@ -90,6 +110,30 @@ public class Musteriler{
 
 	public void setSepet(List<Sepet> sepetler) {
 		this.sepet = sepetler;
+	}
+
+	public List<Siparisler> getSiparis() {
+		return siparis;
+	}
+
+	public void setSiparis(List<Siparisler> siparis) {
+		this.siparis = siparis;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 

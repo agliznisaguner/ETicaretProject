@@ -10,5 +10,6 @@ public interface MusteriService {
 	
 	DataResult<List<Musteriler>> getAll(); 
     Result add(Musteriler musteri);
+    DataResult<Musteriler> findByEmail(String email);
 
 }
