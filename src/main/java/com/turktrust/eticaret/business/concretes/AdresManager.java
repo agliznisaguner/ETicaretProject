@@ -35,5 +35,17 @@ public class AdresManager implements AdresService{
 		return new SuccessResult("Adres eklendi.");
 	}
 
+	@Override
+	public Result delete(Adres adres) {
+		this.adresDao.delete(adres);
+		return new SuccessResult("Adres Silindi");
+	}
+
+	@Override
+	public Result update(Adres adres) {
+		this.adresDao.save(adres);
+		return new SuccessResult("Adres Güncellendi");
+	}
+
 }
 

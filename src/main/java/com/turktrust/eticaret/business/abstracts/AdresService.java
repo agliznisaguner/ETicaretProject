@@ -10,5 +10,7 @@ public interface AdresService {
 	
 	DataResult<List<Adres>> getAll(); 
     Result add(Adres adres);
+    Result delete(Adres adres);
+    Result update(Adres adres);
 
 }

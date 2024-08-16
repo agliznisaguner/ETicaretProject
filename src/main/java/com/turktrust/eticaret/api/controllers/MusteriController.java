@@ -43,6 +43,7 @@ public class MusteriController {
 	public DataResult<List<Musteriler>> getAll(){
 		return this.musteriService.getAll();
 		}
+	
 	@PostMapping("/add")
 	public ResponseEntity<?> add (@Valid @RequestBody Musteriler musteriler) {
 		return ResponseEntity.ok(this.musteriService.add(musteriler));
