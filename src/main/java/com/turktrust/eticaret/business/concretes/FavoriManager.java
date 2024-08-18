@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.turktrust.eticaret.business.abstracts.FavoriService;
+import com.turktrust.eticaret.core.utilities.mapping.ModelMapperService;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.core.utilities.results.SuccessDataResult;
@@ -18,10 +19,12 @@ import com.turktrust.eticaret.entities.concretes.Favoriler;
 public class FavoriManager implements FavoriService{
 	
 	private FavoriDao favoriDao;
+	private ModelMapperService modelMapperService;
 	@Autowired
-	public FavoriManager(FavoriDao favoriDao) {
+	public FavoriManager(FavoriDao favoriDao, ModelMapperService modelMapperService) {
 		super();
 		this.favoriDao = favoriDao;
+		this.modelMapperService = modelMapperService;
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.turktrust.eticaret.business.abstracts.MusteriService;
+import com.turktrust.eticaret.core.utilities.mapping.ModelMapperService;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.core.utilities.results.SuccessDataResult;
@@ -18,10 +19,12 @@ public class MusteriManager implements MusteriService{
 
 
 	private MusteriDao musteriDao;
+	private ModelMapperService modelMapperService;
 	@Autowired
-	public MusteriManager(MusteriDao musteriDao) {
+	public MusteriManager(MusteriDao musteriDao,ModelMapperService modelMapperService) {
 		super();
 		this.musteriDao = musteriDao;
+		this.modelMapperService = modelMapperService;
 	}
 
 	@Override

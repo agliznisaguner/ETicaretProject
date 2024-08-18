@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.turktrust.eticaret.business.abstracts.KategoriService;
+import com.turktrust.eticaret.core.utilities.mapping.ModelMapperService;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.core.utilities.results.SuccessDataResult;
@@ -17,11 +18,14 @@ import com.turktrust.eticaret.entities.concretes.Kategori;
 public class KategoriManager implements KategoriService {
 
 	private KategoriDao kategoriDao;
+	private ModelMapperService modelMapperService;
+
 	
 	@Autowired
-	public KategoriManager(KategoriDao kategoriDao) {
+	public KategoriManager(KategoriDao kategoriDao,ModelMapperService modelMapperService) {
 		super();
 		this.kategoriDao = kategoriDao;
+		this.modelMapperService = modelMapperService;
 	}
 	@Override
 	public DataResult<List<Kategori>> getAll() {

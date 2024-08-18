@@ -3,16 +3,21 @@ package com.turktrust.eticaret.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.turktrust.eticaret.business.abstracts.SaticiService;
+import com.turktrust.eticaret.core.utilities.mapping.ModelMapperService;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.entities.concretes.Saticilar;
+import com.turktrust.eticaret.entities.dtos.SaticiKayitDto;
+
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
@@ -54,6 +59,19 @@ public class SaticiController {
 	public DataResult<Saticilar> getBySaticiFirmaAdiOrUrunId(@RequestParam("saticiFirmaAdi") String saticiFirmaAdi, @RequestParam("urunId") int urunId) {
 	    return this.saticiService.getBySaticiFirmaAdiOrUrunId(saticiFirmaAdi, urunId);
 	}
+	 @GetMapping("/{id}")
+	    public ResponseEntity<DataResult<Saticilar>> getSaticiById(@PathVariable int id) {
+	        DataResult<Saticilar> result = saticiService.getById(id);
+	        return ResponseEntity.ok(result);
+	    }
+	 @PostMapping("/registerSatici")
+	    public ResponseEntity<String> registerSatici(@RequestBody SaticiKayitDto dto) {
+		 Result result = saticiService.addFromDto(dto);
+	        if (result.isSuccess()) {
+	            return ResponseEntity.ok(result.getMessage());
+	        }
+	        return ResponseEntity.badRequest().body(result.getMessage());
+	    }
 
 
 }

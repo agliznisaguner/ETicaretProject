@@ -13,6 +13,8 @@ import com.turktrust.eticaret.business.abstracts.UrunService;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.entities.concretes.Urunler;
+import com.turktrust.eticaret.entities.dtos.SaticiKayitDto;
+import com.turktrust.eticaret.entities.dtos.SaticiUrunKayitDto;
 import com.turktrust.eticaret.entities.dtos.UrunWithKategoriDto;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -72,6 +74,10 @@ public class UrunController {
 	public DataResult<List<UrunWithKategoriDto>> getUrunWithKategoriDetails(){
 		return this.urunService.getUrunWithKategoriDetails();
 	}
+	@PostMapping("/addUrunForSatici")
+    public Result addUrunForSatici(@RequestBody SaticiUrunKayitDto saticiUrunKayitDto) {
+        return this.urunService.addUrunForSatici(saticiUrunKayitDto);
+    }
 
 	
 

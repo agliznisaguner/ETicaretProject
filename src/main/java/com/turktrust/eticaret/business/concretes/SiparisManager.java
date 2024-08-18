@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.turktrust.eticaret.business.abstracts.SiparisService;
+import com.turktrust.eticaret.core.utilities.mapping.ModelMapperService;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.core.utilities.results.SuccessDataResult;
@@ -16,11 +17,15 @@ import com.turktrust.eticaret.entities.concretes.Siparisler;
 public class SiparisManager implements SiparisService {
 
 	private SiparisDao siparisDao;
+	private ModelMapperService modelMapperService;
 
 	@Autowired
-	public SiparisManager(SiparisDao siparisDao) {
+	public SiparisManager(SiparisDao siparisDao, ModelMapperService modelMapperService) {
+		super();
 		this.siparisDao = siparisDao;
+		this.modelMapperService = modelMapperService;
 	}
+	
 
 	@Override
 	public DataResult<List<Siparisler>> getAll() {

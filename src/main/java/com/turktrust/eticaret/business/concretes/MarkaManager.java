@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.turktrust.eticaret.business.abstracts.MarkaService;
+import com.turktrust.eticaret.core.utilities.mapping.ModelMapperService;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.core.utilities.results.SuccessDataResult;
@@ -18,10 +19,13 @@ public class MarkaManager implements MarkaService {
 
 
 	private MarkaDao markaDao;
+	private ModelMapperService modelMapperService;
+
 	@Autowired
-	public MarkaManager(MarkaDao markaDao) {
+	public MarkaManager(MarkaDao markaDao,ModelMapperService modelMapperService) {
 		super();
 		this.markaDao = markaDao;
+		this.modelMapperService = modelMapperService;
 	}
 	@Override
 	public DataResult<List<Markalar>> getAll() {

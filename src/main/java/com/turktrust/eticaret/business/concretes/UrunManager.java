@@ -8,23 +8,37 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.turktrust.eticaret.business.abstracts.UrunService;
+import com.turktrust.eticaret.core.utilities.mapping.ModelMapperService;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.core.utilities.results.SuccessDataResult;
 import com.turktrust.eticaret.core.utilities.results.SuccessResult;
+import com.turktrust.eticaret.dataAccess.abstracts.KategoriDao;
+import com.turktrust.eticaret.dataAccess.abstracts.MarkaDao;
+import com.turktrust.eticaret.dataAccess.abstracts.SaticiDao;
 import com.turktrust.eticaret.dataAccess.abstracts.UrunDao;
+import com.turktrust.eticaret.entities.concretes.Saticilar;
 import com.turktrust.eticaret.entities.concretes.Urunler;
+import com.turktrust.eticaret.entities.dtos.SaticiUrunKayitDto;
 import com.turktrust.eticaret.entities.dtos.UrunWithKategoriDto;
 
 @Service
 public class UrunManager implements UrunService {
 
 	private UrunDao urunDao;
+	private ModelMapperService modelMapperService;
+	private SaticiDao saticiDao;
+    private MarkaDao markaDao;
+    private KategoriDao kategoriDao;
+
 	@Autowired
-	public UrunManager(UrunDao urunDao) {
-		super();
-		this.urunDao = urunDao;
-	}
+	 public UrunManager(UrunDao urunDao, ModelMapperService modelMapperService, SaticiDao saticiDao, MarkaDao markaDao, KategoriDao kategoriDao) {
+        this.urunDao = urunDao;
+        this.modelMapperService = modelMapperService;
+        this.saticiDao = saticiDao;
+        this.markaDao = markaDao;
+        this.kategoriDao = kategoriDao;
+    }
 	@Override
 	public DataResult<List<Urunler>> getAll() {
 		return new SuccessDataResult<List<Urunler>>(this.urunDao.findAll(),"Data listelendi.");
@@ -32,8 +46,8 @@ public class UrunManager implements UrunService {
 	}
 	@Override
 	public Result add(Urunler urun) {
-		this.urunDao.save(urun);
-		return new SuccessResult("Ürün eklendi.");
+		 urunDao.save(urun);
+	        return new SuccessResult("Ürün eklendi.");
 	}
 
 	@Override
@@ -83,6 +97,22 @@ public class UrunManager implements UrunService {
 	public DataResult<List<UrunWithKategoriDto>> getUrunWithKategoriDetails() {
 		return new SuccessDataResult<List<UrunWithKategoriDto>>(this.urunDao.getUrunWithKategoriDetails(),"Data listelendi");
 	}
+	@Override
+    public DataResult<Urunler> getById(int id) {
+        Urunler urun = urunDao.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Ürün bulunamadı."));
+        return new SuccessDataResult<>(urun, "Ürün getirildi.");
+    }
+	 @Override
+	    public Result addUrunForSatici(SaticiUrunKayitDto saticiUrunKayitDto) {
+	        Urunler urun = modelMapperService.forDto().map(saticiUrunKayitDto, Urunler.class);
+	        urun.setSatici(saticiDao.findById(saticiUrunKayitDto.getSaticiId()).orElseThrow(() -> new IllegalArgumentException("Satıcı bulunamadı.")));
+	        urun.setMarka(markaDao.findById(saticiUrunKayitDto.getMarkaId()).orElseThrow(() -> new IllegalArgumentException("Marka bulunamadı.")));
+	        urun.setKategori(kategoriDao.findById(saticiUrunKayitDto.getKategoriId()).orElseThrow(() -> new IllegalArgumentException("Kategori bulunamadı.")));
+	        urunDao.save(urun);
+	        return new SuccessResult("Ürün eklendi.");
+	    }
+	
 
 
 	//@Override

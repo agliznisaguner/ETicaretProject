@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.turktrust.eticaret.business.abstracts.FiyatService;
+import com.turktrust.eticaret.core.utilities.mapping.ModelMapperService;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.core.utilities.results.SuccessDataResult;
@@ -17,10 +18,12 @@ import com.turktrust.eticaret.entities.concretes.Fiyat;
 public class FiyatManager implements FiyatService{
 	
 	private FiyatDao fiyatDao;
+	private ModelMapperService modelMapperService;
 	@Autowired
-	public FiyatManager(FiyatDao fiyatDao) {
+	public FiyatManager(FiyatDao fiyatDao,ModelMapperService modelMapperService) {
 		super();
 		this.fiyatDao = fiyatDao;
+		this.modelMapperService= modelMapperService;
 	}
 
 	@Override

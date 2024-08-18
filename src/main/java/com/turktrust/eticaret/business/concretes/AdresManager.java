@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.turktrust.eticaret.business.abstracts.AdresService;
+import com.turktrust.eticaret.core.utilities.mapping.ModelMapperService;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.core.utilities.results.SuccessDataResult;
@@ -17,10 +18,12 @@ import com.turktrust.eticaret.entities.concretes.Adres;
 public class AdresManager implements AdresService{
 	
 	private AdresDao adresDao;
+	private ModelMapperService modelMapperService;
 	@Autowired
-	public AdresManager(AdresDao adresDao) {
+	public AdresManager(AdresDao adresDao, ModelMapperService modelMapperService) {
 		super();
 		this.adresDao = adresDao;
+		this.modelMapperService = modelMapperService;
 	}
 	
 	@Override
