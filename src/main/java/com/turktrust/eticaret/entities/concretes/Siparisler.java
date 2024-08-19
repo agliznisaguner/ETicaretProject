@@ -2,6 +2,8 @@ package com.turktrust.eticaret.entities.concretes;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Lazy;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,6 +24,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class Siparisler {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="siparis_id",nullable = false)

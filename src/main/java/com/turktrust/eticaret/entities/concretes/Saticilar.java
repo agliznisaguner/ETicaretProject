@@ -2,10 +2,13 @@ package com.turktrust.eticaret.entities.concretes;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Lazy;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,7 +33,7 @@ public class Saticilar {
 	@Column(name="satici_firma_adi")
 	private String saticiFirmaAdi;
 	
-	@OneToMany(mappedBy = "satici")
+	@OneToMany(mappedBy = "satici",fetch = FetchType.LAZY)
 	private List<Urunler> urun;
 	
 	public Saticilar(int id, String satici_Firma_Adi, List<Urunler> urunler) {

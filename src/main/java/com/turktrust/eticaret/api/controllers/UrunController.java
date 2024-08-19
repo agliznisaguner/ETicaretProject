@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.entities.concretes.Urunler;
 import com.turktrust.eticaret.entities.dtos.SaticiKayitDto;
 import com.turktrust.eticaret.entities.dtos.SaticiUrunKayitDto;
+import com.turktrust.eticaret.entities.dtos.SaticiUrunUpdateDto;
 import com.turktrust.eticaret.entities.dtos.UrunWithKategoriDto;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -78,6 +80,10 @@ public class UrunController {
     public Result addUrunForSatici(@RequestBody SaticiUrunKayitDto saticiUrunKayitDto) {
         return this.urunService.addUrunForSatici(saticiUrunKayitDto);
     }
+	@PutMapping("/updateUrunForSatici")
+	public Result saticiUrunUpdate(@RequestBody SaticiUrunUpdateDto saticiUrunUpdateDto, int saticiId, int urunId) {
+		return this.urunService.saticiUrunUpdate(saticiUrunUpdateDto, saticiId, urunId);
+	}
 
 	
 

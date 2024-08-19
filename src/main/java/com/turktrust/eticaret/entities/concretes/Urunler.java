@@ -2,10 +2,13 @@ package com.turktrust.eticaret.entities.concretes;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Lazy;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,7 +34,8 @@ public class Urunler {
 	@Column(name="urun_id",nullable = false)
 	private int urunId;
 	
-	@ManyToOne
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="satici_id",referencedColumnName = "satici_id")
 	private Saticilar satici;
 	

@@ -7,14 +7,16 @@ public class SaticiUrunKayitDto {
     private int saticiId;
     private int markaId;
     private int kategoriId;
+    private int fiyatId;
     
-	public SaticiUrunKayitDto(String urunAdi, int stokSayisi, int saticiId, int markaId, int kategoriId) {
+	public SaticiUrunKayitDto(String urunAdi, int stokSayisi, int saticiId, int markaId, int kategoriId , int fiyat) {
 		super();
 		this.urunAdi = urunAdi;
 		this.stokSayisi = stokSayisi;
 		this.saticiId = saticiId;
 		this.markaId = markaId;
 		this.kategoriId = kategoriId;
+		this.fiyatId = fiyat;
 	}
 	public SaticiUrunKayitDto() {}
 	public String getUrunAdi() {
@@ -46,6 +48,12 @@ public class SaticiUrunKayitDto {
 	}
 	public void setKategoriId(int kategoriId) {
 		this.kategoriId = kategoriId;
+	}
+	public int getFiyatId() {
+		return fiyatId;
+	}
+	public void setFiyatId(int fiyatId) {
+		this.fiyatId = fiyatId;
 	}
 
 }

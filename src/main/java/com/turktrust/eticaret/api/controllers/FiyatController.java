@@ -12,6 +12,8 @@ import com.turktrust.eticaret.business.abstracts.FiyatService;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.entities.concretes.Fiyat;
+import com.turktrust.eticaret.entities.dtos.FiyatAddDto;
+
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
@@ -36,6 +38,11 @@ public class FiyatController {
 	public Result add (@RequestBody Fiyat fiyat) {
 		return this.fiyatService.add(fiyat);
 		
+	}
+	@PostMapping("/addFromFiyatAddDto")
+	public Result addFromFiyatAddDto (@RequestBody FiyatAddDto fiyatAddDto) {
+		Result result = fiyatService.addFromFiyatAddDto(fiyatAddDto);
+		return result;
 	}
 
 }

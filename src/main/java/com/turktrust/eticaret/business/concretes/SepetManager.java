@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.stream.Collectors;
 
 import com.turktrust.eticaret.business.abstracts.SepetService;
 import com.turktrust.eticaret.core.utilities.mapping.ModelMapperService;
@@ -39,5 +40,28 @@ public class SepetManager implements SepetService {
 		this.sepetDao.save(sepet);
 		return new SuccessResult("Sepet eklendi.");
 	}
+	@Override
+	public SepetUrunGetDto getSepetUrunler(int sepetId) {
+	    Sepet sepet = sepetDao.findById(sepetId)
+	                                  .orElseThrow(() -> new RuntimeException("Sepet bulunamadı"));
+	    
+	    SepetUrunGetDto sepetDto = modelMapperService.forDto().map(sepet, SepetUrunGetDto.class);
+	    
+	    List<UrunDetayDto> urunDetayDtos = sepet.getUrun().stream()
+	        .map(urun -> {
+	            UrunDetayDto urunDto = modelMapperService.forDto().map(urun, UrunDetayDto.class);
+	            urunDto.setUrunFiyati(urun.getFiyatlar().get(0).getUrun_Fiyat());
+	            urunDto.setKategoriAdi(urun.getKategori().getKategori_Adi());
+	            urunDto.setMarkaAdi(urun.getMarka().getMarka_Adi());
+	            return urunDto;
+	        })
+	        .collect(Collectors.toList());
+
+	    sepetDto.setUrunler(urunDetayDtos);
+
+	    return sepetDto;
+	}
+	
+
 
 }

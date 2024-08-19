@@ -1,6 +1,5 @@
 package com.turktrust.eticaret.entities.concretes;
 
-
 import java.util.List;
 
 import jakarta.persistence.Column;

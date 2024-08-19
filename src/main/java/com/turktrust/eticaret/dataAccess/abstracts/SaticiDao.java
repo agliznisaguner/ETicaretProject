@@ -12,6 +12,8 @@ public interface SaticiDao extends JpaRepository<Saticilar, Integer>{
 	    Saticilar getBySaticiFirmaAdiAndUrunId(String saticiFirmaAdi, int urunId);
 	    
 	    Saticilar getBySaticiFirmaAdiOrUrunId(String saticiFirmaAdi, int urunId);
+	    
+	    
 	
 
 }
