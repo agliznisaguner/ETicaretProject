@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +22,7 @@ import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.ErrorDataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.entities.concretes.Musteriler;
+import com.turktrust.eticaret.entities.dtos.UrunDetayDto;
 
 import jakarta.validation.Valid;
 
@@ -60,6 +62,10 @@ public class MusteriController {
 		return errors;
 		
 	}
+	//@GetMapping("/getUrunlerFromSepet")
+	
+
+	
 	
 	
 	

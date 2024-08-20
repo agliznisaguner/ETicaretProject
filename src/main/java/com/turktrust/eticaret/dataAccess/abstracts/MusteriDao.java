@@ -7,5 +7,7 @@ import com.turktrust.eticaret.entities.concretes.Musteriler;
 public interface MusteriDao extends JpaRepository<Musteriler, Integer> {
 
 	Musteriler findByEmail(String email);
+	Musteriler findById(int musteriId);
+	
 	
 }

@@ -13,6 +13,9 @@ import com.turktrust.eticaret.core.utilities.results.SuccessDataResult;
 import com.turktrust.eticaret.core.utilities.results.SuccessResult;
 import com.turktrust.eticaret.dataAccess.abstracts.MusteriDao;
 import com.turktrust.eticaret.entities.concretes.Musteriler;
+import com.turktrust.eticaret.entities.concretes.Urunler;
+import com.turktrust.eticaret.entities.dtos.SepetUrunGetDto;
+import com.turktrust.eticaret.entities.dtos.UrunDetayDto;
 
 @Service
 public class MusteriManager implements MusteriService{
@@ -42,5 +45,11 @@ public class MusteriManager implements MusteriService{
 	@Override
 	public DataResult<Musteriler> findByEmail(String email) {
 		return new SuccessDataResult<Musteriler>(this.musteriDao.findByEmail(email),"Musteri listelendi.");
+	}
+
+	@Override
+	public DataResult<List<UrunDetayDto>> getUrunFromSepetByMusteri(SepetUrunGetDto sepetUrunGetDto) {
+		
+		return new SuccessDataResult<List<UrunDetayDto>>(sepetUrunGetDto.getUrunler(),"Urunler Listelendi.");
 	}
 }
