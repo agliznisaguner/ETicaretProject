@@ -79,8 +79,11 @@ public class SiparisManager implements SiparisService {
             .mapToInt(urun -> urun.getFiyatlar().get(0).getUrun_Fiyat())
             .sum();
         
-        Adres adres = adresDao.findById(adresId);
-        siparis.setSiparisDetay("Toplam Fiyat: " + toplamFiyat + " /n" + " Müşteri adresi: ");
+        Adres adres = adresDao.findByMusteri_musteriId(musteriId);
+        if(adres==null) { 
+        	return new ErrorResult("Adres yok.");}
+        String adresDetay = adres.getAdres();
+        siparis.setSiparisDetay("Toplam Fiyat: " + toplamFiyat + " /n" + " Müşteri adresi: "+ adresDetay);
  
         // Siparişi kaydet
         siparisDao.save(siparis);

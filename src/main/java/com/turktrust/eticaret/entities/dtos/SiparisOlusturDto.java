@@ -2,13 +2,13 @@ package com.turktrust.eticaret.entities.dtos;
 
 public class SiparisOlusturDto {
 	private int MusteriId;
-	private int AdresId;
 	
-	public SiparisOlusturDto(int musteriId, int adres) {
+	public SiparisOlusturDto(int musteriId) {
 		super();
 		MusteriId = musteriId;
-		AdresId = adres;
 	}
+	public SiparisOlusturDto() {
+    }
 
 	public int getMusteriId() {
 		return MusteriId;
@@ -16,14 +16,6 @@ public class SiparisOlusturDto {
 
 	public void setMusteriId(int musteriId) {
 		MusteriId = musteriId;
-	}
-
-	public int getAdres() {
-		return AdresId;
-	}
-
-	public void setAdres(int adres) {
-		AdresId = adres;
 	}
 	
 	
