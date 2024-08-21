@@ -63,18 +63,16 @@ public class SiparisManager implements SiparisService {
             return new ErrorResult("Sepet bulunamadı.");
         }
 
-        Sepet sepet = sepetler.get(0); // İlk sepeti alıyoruz.
+        Sepet sepet = sepetler.get(0); 
         List<Urunler> urunler = sepet.getUrun();
 
         if (urunler.isEmpty()) {
             return new ErrorResult("Sepet boş.");
         }
 
-        // Sipariş oluşturma
         Siparisler siparis = new Siparisler();
         siparis.setMusteriId(sepet.getMusteri());
 
-        // Ürünlerin toplam fiyatını hesapla
         double toplamFiyat = urunler.stream()
             .mapToInt(urun -> urun.getFiyatlar().get(0).getUrun_Fiyat())
             .sum();
@@ -83,12 +81,10 @@ public class SiparisManager implements SiparisService {
         if(adres==null) { 
         	return new ErrorResult("Adres yok.");}
         String adresDetay = adres.getAdres();
-        siparis.setSiparisDetay("Toplam Fiyat: " + toplamFiyat + " /n" + " Müşteri adresi: "+ adresDetay);
+        siparis.setSiparisDetay("Toplam Fiyat: " + toplamFiyat + ". " + " Müşteri adresi: "+ adresDetay);
  
-        // Siparişi kaydet
         siparisDao.save(siparis);
 
-        // Stok güncelleme ve sepetten çıkarma
         for (Urunler urun : urunler) {
         	if(urun.getStok_Sayisi()<=0) return new ErrorResult("Ürün stoğu yetersiz. Lütfen ürünü sepetten çıkardıktan sonra tekrar deneyin.");
             urun.setStok_Sayisi(urun.getStok_Sayisi() - 1);
