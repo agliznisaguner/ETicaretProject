@@ -10,20 +10,22 @@ import com.turktrust.eticaret.core.utilities.results.ErrorDataResult;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-	 @ExceptionHandler
-	    @ResponseStatus(HttpStatus.BAD_REQUEST)
-	    public ErrorDataResult<Object> handleIllegalArgumentException(IllegalArgumentException illegalArgumentException){
+	@ExceptionHandler
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ErrorDataResult<Object> handleIllegalArgumentException(IllegalArgumentException illegalArgumentException) {
 
-	        ErrorDataResult<Object> error = new ErrorDataResult<>(illegalArgumentException.getMessage(),"IllegalArgument.Error");
+		ErrorDataResult<Object> error = new ErrorDataResult<>(illegalArgumentException.getMessage(),
+				"IllegalArgument.Error");
 
-	        return error;
-	    }
-	 @ExceptionHandler
-	    @ResponseStatus(HttpStatus.BAD_REQUEST)
-	    public ErrorDataResult<Object> handleDataIntegrityViolationException(Exception exception){
+		return error;
+	}
 
-	        ErrorDataResult<Object> error = new ErrorDataResult<>(exception.getMessage(),"Exception.Error");
+	@ExceptionHandler
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ErrorDataResult<Object> handleDataIntegrityViolationException(Exception exception) {
 
-	        return error;
-	    }
+		ErrorDataResult<Object> error = new ErrorDataResult<>(exception.getMessage(), "Exception.Error");
+
+		return error;
+	}
 }

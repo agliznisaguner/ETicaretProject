@@ -18,13 +18,13 @@ import com.turktrust.eticaret.entities.dtos.SepetUrunGetDto;
 import com.turktrust.eticaret.entities.dtos.UrunDetayDto;
 
 @Service
-public class MusteriManager implements MusteriService{
-
+public class MusteriManager implements MusteriService {
 
 	private MusteriDao musteriDao;
 	private ModelMapperService modelMapperService;
+
 	@Autowired
-	public MusteriManager(MusteriDao musteriDao,ModelMapperService modelMapperService) {
+	public MusteriManager(MusteriDao musteriDao, ModelMapperService modelMapperService) {
 		super();
 		this.musteriDao = musteriDao;
 		this.modelMapperService = modelMapperService;
@@ -32,8 +32,8 @@ public class MusteriManager implements MusteriService{
 
 	@Override
 	public DataResult<List<Musteriler>> getAll() {
-		return new SuccessDataResult<List<Musteriler>>(this.musteriDao.findAll(),"Data listelendi.");
-		
+		return new SuccessDataResult<List<Musteriler>>(this.musteriDao.findAll(), "Data listelendi.");
+
 	}
 
 	@Override
@@ -44,12 +44,12 @@ public class MusteriManager implements MusteriService{
 
 	@Override
 	public DataResult<Musteriler> findByEmail(String email) {
-		return new SuccessDataResult<Musteriler>(this.musteriDao.findByEmail(email),"Musteri listelendi.");
+		return new SuccessDataResult<Musteriler>(this.musteriDao.findByEmail(email), "Musteri listelendi.");
 	}
 
 	@Override
 	public DataResult<List<UrunDetayDto>> getUrunFromSepetByMusteri(SepetUrunGetDto sepetUrunGetDto) {
-		
-		return new SuccessDataResult<List<UrunDetayDto>>(sepetUrunGetDto.getUrunler(),"Urunler Listelendi.");
+
+		return new SuccessDataResult<List<UrunDetayDto>>(sepetUrunGetDto.getUrunler(), "Urunler Listelendi.");
 	}
 }

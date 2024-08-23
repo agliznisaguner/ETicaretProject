@@ -1,4 +1,5 @@
 package com.turktrust.eticaret.business.concretes;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class SepetManager implements SepetService {
 		super();
 		this.sepetDao = sepetDao;
 		this.modelMapperService = modelMapperService;
-	}	
+	}
 
 	@Override
 	public DataResult<List<Sepet>> getAll() {
@@ -40,59 +41,33 @@ public class SepetManager implements SepetService {
 		this.sepetDao.save(sepet);
 		return new SuccessResult("Sepet eklendi.");
 	}
-//	@Override    mapper kullanarak yapılan method.
-//	public SepetUrunGetDto getSepetUrunler(int sepetId) {
-//	 Sepet sepet = sepetDao.findById(sepetId)
-//	            .orElseThrow(() -> new RuntimeException("Sepet bulunamadı"));
-//	    SepetUrunGetDto sepetDto = modelMapperService.forDto().map(sepet, SepetUrunGetDto.class);
-//
-//	    List<UrunDetayDto> urunDetayDtos = sepet.getUrun().stream()
-//	            .map(urun -> {
-//	                UrunDetayDto urunDto = modelMapperService.forDto().map(urun, UrunDetayDto.class);
-//
-//	                if (!urun.getFiyatlar().isEmpty()) {
-//	                    urunDto.setUrunFiyati(urun.getFiyatlar().get(0).getUrun_Fiyat());
-//	                } else {
-//	                    urunDto.setUrunFiyati(0); 
-//	                }
-//
-//	                return urunDto;
-//	            })
-//	            .collect(Collectors.toList());
-//
-//	    sepetDto.setUrunler(urunDetayDtos);
-//
-//	    return sepetDto;
-//	}
+
 	@Override
 	public SepetUrunGetDto getSepetUrunler(int sepetId) {
-				 Sepet sepet = sepetDao.findById(sepetId)
-		                 .orElseThrow(() -> new RuntimeException("Sepet bulunamadı"));
-		
+		Sepet sepet = sepetDao.findById(sepetId).orElseThrow(() -> new RuntimeException("Sepet bulunamadı"));
+
 		SepetUrunGetDto sepetDto = new SepetUrunGetDto();
 		sepetDto.setSepetId(sepet.getId());
-		
-		List<UrunDetayDto> urunDetayDtos = sepet.getUrun().stream()
-		.map(urun -> {
-		UrunDetayDto urunDto = new UrunDetayDto();
-		urunDto.setUrunId(urun.getId()); 
-		
-		if (!urun.getFiyatlar().isEmpty()) {
-		urunDto.setUrunFiyati(urun.getFiyatlar().get(0).getUrun_Fiyat());
-		} else {
-		urunDto.setUrunFiyati(0); 
-		}
-		
-		urunDto.setKategoriAdi(urun.getKategori().getKategori_Adi()); 
-		urunDto.setMarkaAdi(urun.getMarka().getMarka_Adi());
-		urunDto.setUrunAdi(urun.getUrun_Adi());
-		urunDto.setStokSayisi(urun.getStok_Sayisi());
-		return urunDto;
-		})
-		.collect(Collectors.toList());
-		
+
+		List<UrunDetayDto> urunDetayDtos = sepet.getUrun().stream().map(urun -> {
+			UrunDetayDto urunDto = new UrunDetayDto();
+			urunDto.setUrunId(urun.getId());
+
+			if (!urun.getFiyatlar().isEmpty()) {
+				urunDto.setUrunFiyati(urun.getFiyatlar().get(0).getUrun_Fiyat());
+			} else {
+				urunDto.setUrunFiyati(0);
+			}
+
+			urunDto.setKategoriAdi(urun.getKategori().getKategori_Adi());
+			urunDto.setMarkaAdi(urun.getMarka().getMarka_Adi());
+			urunDto.setUrunAdi(urun.getUrun_Adi());
+			urunDto.setStokSayisi(urun.getStok_Sayisi());
+			return urunDto;
+		}).collect(Collectors.toList());
+
 		sepetDto.setUrunler(urunDetayDtos);
-		
+
 		return sepetDto;
 	}
 

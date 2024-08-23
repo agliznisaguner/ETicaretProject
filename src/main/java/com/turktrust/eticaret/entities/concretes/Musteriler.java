@@ -1,7 +1,6 @@
 package com.turktrust.eticaret.entities.concretes;
 
 import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,40 +22,39 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name="musteriler")
-public class Musteriler{
-	
+@Table(name = "musteriler")
+public class Musteriler {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="musteri_id",nullable = false)
+	@Column(name = "musteri_id", nullable = false)
 	private int musteriId;
-	
-	@Column(name="musteri_no")
+
+	@Column(name = "musteri_no")
 	private int musteriNo;
-	
+
 	@OneToMany(mappedBy = "musteri")
 	private List<Adres> adres;
-	
+
 	@OneToMany(mappedBy = "musteri")
 	private List<Siparisler> siparis;
-	
+
 	@OneToMany(mappedBy = "musteri")
 	private List<Sepet> sepet;
-	
-	@OneToMany(mappedBy= "musteri")
+
+	@OneToMany(mappedBy = "musteri")
 	private List<Favoriler> favori;
-	
+
 	@Column(name = "email", unique = true, nullable = false)
 	@Email
 	@NotBlank
 	@NotNull
 	private String email;
-	
+
 	@Column(name = "password", nullable = false)
 	@NotBlank
 	@NotNull
 	private String password;
-	
 
 	public Musteriler(int musteriId, int musteriNo, List<Adres> adres, List<Siparisler> siparis, List<Sepet> sepet,
 			List<Favoriler> favori, String email, String password) {
@@ -70,7 +68,9 @@ public class Musteriler{
 		this.email = email;
 		this.password = password;
 	}
-	public Musteriler() {}
+
+	public Musteriler() {
+	}
 
 	public int getId() {
 		return musteriId;
@@ -135,7 +135,4 @@ public class Musteriler{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-
-
 }

@@ -15,25 +15,26 @@ import com.turktrust.eticaret.dataAccess.abstracts.AdresDao;
 import com.turktrust.eticaret.entities.concretes.Adres;
 
 @Service
-public class AdresManager implements AdresService{
-	
+public class AdresManager implements AdresService {
+
 	private AdresDao adresDao;
 	private ModelMapperService modelMapperService;
+
 	@Autowired
 	public AdresManager(AdresDao adresDao, ModelMapperService modelMapperService) {
 		super();
 		this.adresDao = adresDao;
 		this.modelMapperService = modelMapperService;
 	}
-	
+
 	@Override
 	public DataResult<List<Adres>> getAll() {
-		return new SuccessDataResult<List<Adres>>(this.adresDao.findAll(),"Data listelendi.");
-		
+		return new SuccessDataResult<List<Adres>>(this.adresDao.findAll(), "Data listelendi.");
+
 	}
 
 	@Override
-	public Result add(Adres adres){
+	public Result add(Adres adres) {
 		this.adresDao.save(adres);
 		return new SuccessResult("Adres eklendi.");
 	}
@@ -51,4 +52,3 @@ public class AdresManager implements AdresService{
 	}
 
 }
-

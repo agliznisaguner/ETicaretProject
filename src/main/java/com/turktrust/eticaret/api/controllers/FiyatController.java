@@ -19,28 +19,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/api/fiyat")
 public class FiyatController {
-	
 
 	private FiyatService fiyatService;
-	
+
 	@Autowired
 	public FiyatController(FiyatService fiyatService) {
-		super();
+
 		this.fiyatService = fiyatService;
 	}
-	
+
 	@GetMapping("/getAll")
-	public DataResult<List<Fiyat>> getAll(){
+	public DataResult<List<Fiyat>> getAll() {
 		return this.fiyatService.getAll();
-		}
-	
-	@PostMapping("/add")
-	public Result add (@RequestBody Fiyat fiyat) {
-		return this.fiyatService.add(fiyat);
-		
 	}
-	@PostMapping("/addFromFiyatAddDto")
-	public Result addFromFiyatAddDto (@RequestBody FiyatAddDto fiyatAddDto) {
+
+	@PostMapping("/add")
+	public Result addFromFiyatAddDto(@RequestBody FiyatAddDto fiyatAddDto) {
 		Result result = fiyatService.addFromFiyatAddDto(fiyatAddDto);
 		return result;
 	}

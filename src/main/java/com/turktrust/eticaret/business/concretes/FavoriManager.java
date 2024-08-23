@@ -14,12 +14,12 @@ import com.turktrust.eticaret.core.utilities.results.SuccessResult;
 import com.turktrust.eticaret.dataAccess.abstracts.FavoriDao;
 import com.turktrust.eticaret.entities.concretes.Favoriler;
 
-
 @Service
-public class FavoriManager implements FavoriService{
-	
+public class FavoriManager implements FavoriService {
+
 	private FavoriDao favoriDao;
 	private ModelMapperService modelMapperService;
+
 	@Autowired
 	public FavoriManager(FavoriDao favoriDao, ModelMapperService modelMapperService) {
 		super();
@@ -29,8 +29,8 @@ public class FavoriManager implements FavoriService{
 
 	@Override
 	public DataResult<List<Favoriler>> getAll() {
-		return new SuccessDataResult<List<Favoriler>>(this.favoriDao.findAll(),"Data listelendi.");
-		
+		return new SuccessDataResult<List<Favoriler>>(this.favoriDao.findAll(), "Data listelendi.");
+
 	}
 
 	@Override

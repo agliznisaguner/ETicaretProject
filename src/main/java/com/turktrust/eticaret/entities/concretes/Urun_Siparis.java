@@ -16,22 +16,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name="urun_siparis")
+@Table(name = "urun_siparis")
 public class Urun_Siparis {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="urun_siparis_id",nullable = false)
+	@Column(name = "urun_siparis_id", nullable = false)
 	private int urunSiparisId;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "siparis_id",referencedColumnName = "siparis_id")
+	@JoinColumn(name = "siparis_id", referencedColumnName = "siparis_id")
 	private Siparisler siparis;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "urun_id	",referencedColumnName = "urun_id")
+	@JoinColumn(name = "urun_id	", referencedColumnName = "urun_id")
 	private Urunler urun;
-		
 
 	public Urun_Siparis(int id, Siparisler siparisler, Urunler urunler) {
 		super();
@@ -40,8 +39,9 @@ public class Urun_Siparis {
 		this.urun = urunler;
 	}
 
-	public Urun_Siparis() {}
-	
+	public Urun_Siparis() {
+	}
+
 	public int getId() {
 		return urunSiparisId;
 	}
@@ -65,10 +65,5 @@ public class Urun_Siparis {
 	public void setUrunler(Urunler urunler) {
 		this.urun = urunler;
 	}
-
-
-	
-
-	
 
 }

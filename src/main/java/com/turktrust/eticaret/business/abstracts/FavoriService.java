@@ -8,6 +8,7 @@ import com.turktrust.eticaret.entities.concretes.Favoriler;
 
 public interface FavoriService {
 
-	DataResult<List<Favoriler>> getAll(); 
-    Result add(Favoriler favori);
+	DataResult<List<Favoriler>> getAll();
+
+	Result add(Favoriler favori);
 }

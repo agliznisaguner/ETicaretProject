@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.turktrust.eticaret.business.abstracts.SaticiService;
-import com.turktrust.eticaret.core.utilities.mapping.ModelMapperService;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.entities.concretes.Saticilar;
@@ -25,53 +24,58 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class SaticiController {
 
 	private SaticiService saticiService;
-	
+
 	@Autowired
 	public SaticiController(SaticiService saticiService) {
-		super();
 		this.saticiService = saticiService;
 	}
-	
+
 	@GetMapping("/getAll")
-	public DataResult<List<Saticilar>> getAll(){
+	public DataResult<List<Saticilar>> getAll() {
 		return this.saticiService.getAll();
-		}
-	@PostMapping("/add")
-	public Result add (@RequestBody Saticilar satici) {
-		return this.saticiService.add(satici);
-		
 	}
+
+	@PostMapping("/add")
+	public Result add(@RequestBody Saticilar satici) {
+		return this.saticiService.add(satici);
+
+	}
+
 	@GetMapping("/getBySaticiAdi")
-    public DataResult<Saticilar> getBySaticiFirmaAdi(@RequestParam String saticiFirmaAdi) {
-        return this.saticiService.getBySaticiFirmaAdi(saticiFirmaAdi);
-    }
+	public DataResult<Saticilar> getBySaticiFirmaAdi(@RequestParam String saticiFirmaAdi) {
+		return this.saticiService.getBySaticiFirmaAdi(saticiFirmaAdi);
+	}
 
 	@GetMapping("/getAllByPage")
 	public DataResult<List<Saticilar>> getAll(int pageNo, int pageSize) {
-	    return this.saticiService.getAll(pageNo, pageSize);
+		return this.saticiService.getAll(pageNo, pageSize);
 	}
+
 	@GetMapping("/getBySaticiFirmaAdiAndUrunId")
-	public DataResult<Saticilar> getBySaticiFirmaAdiAndUrunId(@RequestParam("saticiFirmaAdi") String saticiFirmaAdi, @RequestParam("urunId") int urunId) {
-	    return this.saticiService.getBySaticiFirmaAdiAndUrunId(saticiFirmaAdi, urunId);
+	public DataResult<Saticilar> getBySaticiFirmaAdiAndUrunId(@RequestParam("saticiFirmaAdi") String saticiFirmaAdi,
+			@RequestParam("urunId") int urunId) {
+		return this.saticiService.getBySaticiFirmaAdiAndUrunId(saticiFirmaAdi, urunId);
 	}
 
 	@GetMapping("/getBySaticiFirmaAdiOrUrunId")
-	public DataResult<Saticilar> getBySaticiFirmaAdiOrUrunId(@RequestParam("saticiFirmaAdi") String saticiFirmaAdi, @RequestParam("urunId") int urunId) {
-	    return this.saticiService.getBySaticiFirmaAdiOrUrunId(saticiFirmaAdi, urunId);
+	public DataResult<Saticilar> getBySaticiFirmaAdiOrUrunId(@RequestParam("saticiFirmaAdi") String saticiFirmaAdi,
+			@RequestParam("urunId") int urunId) {
+		return this.saticiService.getBySaticiFirmaAdiOrUrunId(saticiFirmaAdi, urunId);
 	}
-	 @GetMapping("/{id}")
-	    public ResponseEntity<DataResult<Saticilar>> getSaticiById(@PathVariable int id) {
-	        DataResult<Saticilar> result = saticiService.getById(id);
-	        return ResponseEntity.ok(result);
-	    }
-	 @PostMapping("/registerSatici")
-	    public ResponseEntity<String> registerSatici(@RequestBody SaticiKayitDto dto) {
-		 Result result = saticiService.addFromDto(dto);
-	        if (result.isSuccess()) {
-	            return ResponseEntity.ok(result.getMessage());
-	        }
-	        return ResponseEntity.badRequest().body(result.getMessage());
-	    }
 
+	@GetMapping("/{id}")
+	public ResponseEntity<DataResult<Saticilar>> getSaticiById(@PathVariable int id) {
+		DataResult<Saticilar> result = saticiService.getById(id);
+		return ResponseEntity.ok(result);
+	}
+
+	@PostMapping("/registerSatici")
+	public ResponseEntity<String> registerSatici(@RequestBody SaticiKayitDto dto) {
+		Result result = saticiService.addFromDto(dto);
+		if (result.isSuccess()) {
+			return ResponseEntity.ok(result.getMessage());
+		}
+		return ResponseEntity.badRequest().body(result.getMessage());
+	}
 
 }

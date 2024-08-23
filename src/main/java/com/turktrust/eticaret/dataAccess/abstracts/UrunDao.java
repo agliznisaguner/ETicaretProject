@@ -8,28 +8,24 @@ import org.springframework.data.jpa.repository.Query;
 import com.turktrust.eticaret.entities.concretes.Urunler;
 import com.turktrust.eticaret.entities.dtos.UrunWithKategoriDto;
 
-public interface UrunDao extends JpaRepository<Urunler, Integer>{
+public interface UrunDao extends JpaRepository<Urunler, Integer> {
 
 	Urunler getByUrunAdi(String urunAdi);
-	
+
 	Urunler getByUrunAdiAndKategoriId(String urunAdi, int kategoriId);
-	
+
 	List<Urunler> getByUrunAdiOrKategoriId(String urunAdi, int kategoriId);
-	
+
 	List<Urunler> getByKategoriIdIn(List<Integer> categories);
-	
+
 	List<Urunler> getByUrunAdiContains(String urunAdi);
-	
+
 	List<Urunler> getByUrunAdiStartsWith(String urunAdi);
-	
+
 	List<Urunler> getByMarka_MarkaAdiIn(List<String> markaAdi);
-	
+
 	List<Urunler> getBySatici_SaticiFirmaAdiIn(List<String> saticiFirmaAdi);
-	
-	//@Query("From Urunler where urun_adi =:urun_adi and kategori.kategori_id=:kategori_id")
-	//List<Urunler> GetByUrun_adiAndKategori( String urun_adi, int kategori_id);
-	
+
 	@Query("Select new com.turktrust.eticaret.entities.dtos.UrunWithKategoriDto(p.urunId,p.urunAdi,c.kategoriAdi) From Kategori c Inner Join c.urun p")
 	List<UrunWithKategoriDto> getUrunWithKategoriDetails();
 }
- 

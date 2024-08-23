@@ -1,4 +1,5 @@
 package com.turktrust.eticaret.api.controllers;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,10 @@ public class SepetController {
 	public Result add(@RequestBody Sepet sepet) {
 		return this.sepetService.add(sepet);
 	}
-	 @GetMapping("/{sepetId}/urunler")
-	    public ResponseEntity<SepetUrunGetDto> getSepetUrunler(@PathVariable int sepetId) {
-	        SepetUrunGetDto sepetUrunGetDto = sepetService.getSepetUrunler(sepetId);
-	        return ResponseEntity.ok(sepetUrunGetDto);
-	    }
+
+	@GetMapping("/{sepetId}/urunler")
+	public ResponseEntity<SepetUrunGetDto> getSepetUrunler(@PathVariable int sepetId) {
+		SepetUrunGetDto sepetUrunGetDto = sepetService.getSepetUrunler(sepetId);
+		return ResponseEntity.ok(sepetUrunGetDto);
+	}
 }

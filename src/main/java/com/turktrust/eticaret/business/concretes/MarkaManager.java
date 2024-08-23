@@ -17,19 +17,19 @@ import com.turktrust.eticaret.entities.concretes.Markalar;
 @Service
 public class MarkaManager implements MarkaService {
 
-
 	private MarkaDao markaDao;
 	private ModelMapperService modelMapperService;
 
 	@Autowired
-	public MarkaManager(MarkaDao markaDao,ModelMapperService modelMapperService) {
+	public MarkaManager(MarkaDao markaDao, ModelMapperService modelMapperService) {
 		super();
 		this.markaDao = markaDao;
 		this.modelMapperService = modelMapperService;
 	}
+
 	@Override
 	public DataResult<List<Markalar>> getAll() {
-		return new SuccessDataResult<List<Markalar>>(this.markaDao.findAll(),"Data listelendi.");
+		return new SuccessDataResult<List<Markalar>>(this.markaDao.findAll(), "Data listelendi.");
 	}
 
 	@Override
@@ -37,20 +37,23 @@ public class MarkaManager implements MarkaService {
 		this.markaDao.save(marka);
 		return new SuccessResult("Ürün eklendi.");
 	}
-	
-	 @Override
-	    public DataResult<Markalar> getByMarkaAdi(String markaAdi) {
-	        return new SuccessDataResult<Markalar>(this.markaDao.getByMarkaAdi(markaAdi), "Marka adı ile arama tamamlandı.");
-	    }
 
-	    @Override
-	    public DataResult<Markalar> getByMarkaAdiOrUrunId(String markaAdi, int urunId) {
-	        return new SuccessDataResult<Markalar>(this.markaDao.getByMarkaAdiOrUrunId(markaAdi, urunId), "Marka adı veya ürün adı ile arama tamamlandı.");
-	    }
+	@Override
+	public DataResult<Markalar> getByMarkaAdi(String markaAdi) {
+		return new SuccessDataResult<Markalar>(this.markaDao.getByMarkaAdi(markaAdi),
+				"Marka adı ile arama tamamlandı.");
+	}
 
-	    @Override
-	    public DataResult<List<Markalar>> getByUrunIdIn(List<Integer> urunler) {
-	        return new SuccessDataResult<List<Markalar>>(this.markaDao.getByUrunIdIn(urunler), "Ürün adı listesi ile arama tamamlandı.");
-	    }
+	@Override
+	public DataResult<Markalar> getByMarkaAdiOrUrunId(String markaAdi, int urunId) {
+		return new SuccessDataResult<Markalar>(this.markaDao.getByMarkaAdiOrUrunId(markaAdi, urunId),
+				"Marka adı veya ürün adı ile arama tamamlandı.");
+	}
+
+	@Override
+	public DataResult<List<Markalar>> getByUrunIdIn(List<Integer> urunler) {
+		return new SuccessDataResult<List<Markalar>>(this.markaDao.getByUrunIdIn(urunler),
+				"Ürün adı listesi ile arama tamamlandı.");
+	}
 
 }

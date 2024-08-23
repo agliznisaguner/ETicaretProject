@@ -14,28 +14,27 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor; 
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="kategori")
+@Table(name = "kategori")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","urunler"})
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "urunler" })
 public class Kategori {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="kategori_id",nullable = false)
+	@Column(name = "kategori_id", nullable = false)
 	private int kategoriId;
-	
-	@Column(name="kategori_adi")
+
+	@Column(name = "kategori_adi")
 	private String kategoriAdi;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "kategori")
 	private List<Urunler> urun;
-
 
 	public Kategori(int kategoriId, String kategori_Adi, List<Urunler> urunlers) {
 		super();
@@ -44,8 +43,9 @@ public class Kategori {
 		this.urun = urunlers;
 	}
 
-	public Kategori() {}
-	
+	public Kategori() {
+	}
+
 	public int getId() {
 		return kategoriId;
 	}

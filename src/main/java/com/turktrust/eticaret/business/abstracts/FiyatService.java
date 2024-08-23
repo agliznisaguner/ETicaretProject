@@ -9,8 +9,8 @@ import com.turktrust.eticaret.entities.dtos.FiyatAddDto;
 
 public interface FiyatService {
 
-	DataResult<List<Fiyat>> getAll(); 
-    Result add(Fiyat fiyat);
-    Result addFromFiyatAddDto(FiyatAddDto fiyatAddDto);
+	DataResult<List<Fiyat>> getAll();
+
+	Result addFromFiyatAddDto(FiyatAddDto fiyatAddDto);
 
 }

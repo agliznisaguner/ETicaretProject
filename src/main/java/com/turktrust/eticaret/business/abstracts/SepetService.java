@@ -9,11 +9,9 @@ import com.turktrust.eticaret.entities.dtos.SepetUrunGetDto;
 
 public interface SepetService {
 	DataResult<List<Sepet>> getAll();
+
 	Result add(Sepet sepet);
+
 	public SepetUrunGetDto getSepetUrunler(int sepetId);
-//	public MusteriSepetUrunAdd()
-	
-	
-	
-	
+
 }

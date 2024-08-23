@@ -10,25 +10,25 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor; 
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="favoriler")
+@Table(name = "favoriler")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Favoriler {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="favori_id",nullable = false)
+	@Column(name = "favori_id", nullable = false)
 	private int favoriId;
-	
+
 	@ManyToOne
-	@JoinColumn(name="urun_id",referencedColumnName = "urun_id")
+	@JoinColumn(name = "urun_id", referencedColumnName = "urun_id")
 	private Urunler urun;
-	
+
 	@ManyToOne
-	@JoinColumn(name="musteri_id")
+	@JoinColumn(name = "musteri_id")
 	private Musteriler musteri;
 
 	public Favoriler(int id, Urunler urun, Musteriler musteri) {
@@ -38,8 +38,9 @@ public class Favoriler {
 		this.musteri = musteri;
 	}
 
-	public Favoriler() {}
-	
+	public Favoriler() {
+	}
+
 	public int getId() {
 		return favoriId;
 	}

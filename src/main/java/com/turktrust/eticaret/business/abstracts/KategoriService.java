@@ -8,7 +8,8 @@ import com.turktrust.eticaret.entities.concretes.Kategori;
 
 public interface KategoriService {
 
-	DataResult<List<Kategori>> getAll(); 
-    Result add(Kategori kategori);
+	DataResult<List<Kategori>> getAll();
+
+	Result add(Kategori kategori);
 
 }

@@ -14,33 +14,30 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor; 
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="sepet")
+@Table(name = "sepet")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Sepet {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="sepet_id",nullable = false)
+	@Column(name = "sepet_id", nullable = false)
 	private int sepetId;
-	
-	
+
 	@ManyToOne
-	@JoinColumn(name = "musteri_id",referencedColumnName = "musteri_id")
+	@JoinColumn(name = "musteri_id", referencedColumnName = "musteri_id")
 	private Musteriler musteri;
-	
+
 	@ManyToMany
-	@JoinTable(name="sepet_urun", 
-	joinColumns = @JoinColumn(name="sepet_id"), 
-	inverseJoinColumns =@JoinColumn(name="urun_id") )
+	@JoinTable(name = "sepet_urun", joinColumns = @JoinColumn(name = "sepet_id"), inverseJoinColumns = @JoinColumn(name = "urun_id"))
 	private List<Urunler> urun;
 
-	public Sepet() {}
-
+	public Sepet() {
+	}
 
 	public Sepet(int sepet_id, Musteriler musteri, List<Urunler> urun) {
 		super();
@@ -48,8 +45,6 @@ public class Sepet {
 		this.musteri = musteri;
 		this.urun = urun;
 	}
-
-
 
 	public int getId() {
 		return sepetId;
@@ -67,17 +62,12 @@ public class Sepet {
 		this.musteri = musteri;
 	}
 
-
-
 	public List<Urunler> getUrun() {
 		return urun;
 	}
 
-
-
 	public void setUrun(List<Urunler> urun) {
 		this.urun = urun;
 	}
-	
-	
+
 }

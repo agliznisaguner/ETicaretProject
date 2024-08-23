@@ -20,16 +20,16 @@ public class KategoriManager implements KategoriService {
 	private KategoriDao kategoriDao;
 	private ModelMapperService modelMapperService;
 
-	
 	@Autowired
-	public KategoriManager(KategoriDao kategoriDao,ModelMapperService modelMapperService) {
+	public KategoriManager(KategoriDao kategoriDao, ModelMapperService modelMapperService) {
 		super();
 		this.kategoriDao = kategoriDao;
 		this.modelMapperService = modelMapperService;
 	}
+
 	@Override
 	public DataResult<List<Kategori>> getAll() {
-		return new SuccessDataResult<List<Kategori>>(this.kategoriDao.findAll(),"Data listelendi.");
+		return new SuccessDataResult<List<Kategori>>(this.kategoriDao.findAll(), "Data listelendi.");
 	}
 
 	@Override

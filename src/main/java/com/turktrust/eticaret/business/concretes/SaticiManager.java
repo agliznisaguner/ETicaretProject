@@ -18,21 +18,21 @@ import com.turktrust.eticaret.entities.concretes.Saticilar;
 import com.turktrust.eticaret.entities.dtos.SaticiKayitDto;
 
 @Service
-public class SaticiManager implements SaticiService{
+public class SaticiManager implements SaticiService {
 
-	 private SaticiDao saticiDao;
-	    private ModelMapperService modelMapperService;
+	private SaticiDao saticiDao;
+	private ModelMapperService modelMapperService;
 
-	    @Autowired
-	    public SaticiManager(SaticiDao saticiDao, ModelMapperService modelMapperService) {
-	        this.saticiDao = saticiDao;
-	        this.modelMapperService = modelMapperService;
-	    }
+	@Autowired
+	public SaticiManager(SaticiDao saticiDao, ModelMapperService modelMapperService) {
+		this.saticiDao = saticiDao;
+		this.modelMapperService = modelMapperService;
+	}
 
 	@Override
 	public DataResult<List<Saticilar>> getAll() {
-		return new SuccessDataResult<List<Saticilar>>(this.saticiDao.findAll(),"Data listelendi.");
-		
+		return new SuccessDataResult<List<Saticilar>>(this.saticiDao.findAll(), "Data listelendi.");
+
 	}
 
 	@Override
@@ -40,40 +40,41 @@ public class SaticiManager implements SaticiService{
 		this.saticiDao.save(satici);
 		return new SuccessResult("Satıcı eklendi.");
 	}
-	 @Override
-	    public Result addFromDto(SaticiKayitDto saticiKayitDto) {
-	        Saticilar satici = modelMapperService.forDto().map(saticiKayitDto, Saticilar.class);
-	        saticiDao.save(satici);
-	        return new SuccessResult("Satıcı eklendi.");
-	    }
 
 	@Override
-    public DataResult<Saticilar> getBySaticiFirmaAdi(String saticiFirmaAdi) {
-        return new SuccessDataResult<Saticilar>(this.saticiDao.getBySaticiFirmaAdi(saticiFirmaAdi), "Data listelendi.");
-    }
+	public Result addFromDto(SaticiKayitDto saticiKayitDto) {
+		Saticilar satici = modelMapperService.forDto().map(saticiKayitDto, Saticilar.class);
+		saticiDao.save(satici);
+		return new SuccessResult("Satıcı eklendi.");
+	}
 
+	@Override
+	public DataResult<Saticilar> getBySaticiFirmaAdi(String saticiFirmaAdi) {
+		return new SuccessDataResult<Saticilar>(this.saticiDao.getBySaticiFirmaAdi(saticiFirmaAdi), "Data listelendi.");
+	}
 
-    @Override
-    public DataResult<List<Saticilar>> getAll(int pageNo, int pageSize) {
-        Pageable pageable = PageRequest.of(pageNo-1, pageSize);
-        return new SuccessDataResult<List<Saticilar>>(this.saticiDao.findAll(pageable).getContent());
-    }
+	@Override
+	public DataResult<List<Saticilar>> getAll(int pageNo, int pageSize) {
+		Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+		return new SuccessDataResult<List<Saticilar>>(this.saticiDao.findAll(pageable).getContent());
+	}
 
 	@Override
 	public DataResult<Saticilar> getBySaticiFirmaAdiAndUrunId(String saticiFirmaAdi, int urunId) {
-		return new SuccessDataResult<Saticilar>(this.saticiDao.getBySaticiFirmaAdiAndUrunId(saticiFirmaAdi, urunId), "Data listelendi.");
+		return new SuccessDataResult<Saticilar>(this.saticiDao.getBySaticiFirmaAdiAndUrunId(saticiFirmaAdi, urunId),
+				"Data listelendi.");
 	}
 
 	@Override
 	public DataResult<Saticilar> getBySaticiFirmaAdiOrUrunId(String saticiFirmaAdi, int urunId) {
-		return new SuccessDataResult<Saticilar>(this.saticiDao.getBySaticiFirmaAdiOrUrunId(saticiFirmaAdi, urunId), "Data listelendi.");
+		return new SuccessDataResult<Saticilar>(this.saticiDao.getBySaticiFirmaAdiOrUrunId(saticiFirmaAdi, urunId),
+				"Data listelendi.");
 	}
-	@Override
-    public DataResult<Saticilar> getById(int id) {
-        Saticilar satici = saticiDao.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Satıcı bulunamadı."));
-        return new SuccessDataResult<>(satici, "Satıcı getirildi.");
-    }
 
+	@Override
+	public DataResult<Saticilar> getById(int id) {
+		Saticilar satici = saticiDao.findById(id).orElseThrow(() -> new IllegalArgumentException("Satıcı bulunamadı."));
+		return new SuccessDataResult<>(satici, "Satıcı getirildi.");
+	}
 
 }

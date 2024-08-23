@@ -1,4 +1,5 @@
 package com.turktrust.eticaret.api.controllers;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,13 +32,14 @@ public class SiparisController {
 	public Result add(@RequestBody Siparisler siparis) {
 		return this.siparisService.add(siparis);
 	}
+
 	@PostMapping("/olustur")
-    public ResponseEntity<Result> siparisOlustur(@RequestBody SiparisOlusturDto siparisOlusturDto) {
-        Result result = siparisService.siparisOlustur(siparisOlusturDto);
-        if (result.isSuccess()) {
-            return ResponseEntity.ok(result);
-        } else {
-            return ResponseEntity.badRequest().body(result);
-        }
-    }
+	public ResponseEntity<Result> siparisOlustur(@RequestBody SiparisOlusturDto siparisOlusturDto) {
+		Result result = siparisService.siparisOlustur(siparisOlusturDto);
+		if (result.isSuccess()) {
+			return ResponseEntity.ok(result);
+		} else {
+			return ResponseEntity.badRequest().body(result);
+		}
+	}
 }

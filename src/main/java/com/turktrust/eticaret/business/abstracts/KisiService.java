@@ -11,10 +11,13 @@ import com.turktrust.eticaret.entities.dtos.KisiMusteriUpdateDto;
 
 public interface KisiService {
 
+	DataResult<List<Kisiler>> getAll();
 
-	DataResult<List<Kisiler>> getAll(); 
-    Result add(Kisiler kisi);
-    Result addFromDto(KisiMusteriKayitDto dto);
-    Result updateFromDto(int id, KisiMusteriUpdateDto dto);
-    DataResult<List<KisiGetDto>> getAllKisiler();
+	Result add(Kisiler kisi);
+
+	Result addFromDto(KisiMusteriKayitDto dto);
+
+	Result updateFromDto(int id, KisiMusteriUpdateDto dto);
+
+	DataResult<List<KisiGetDto>> getAllKisiler();
 }

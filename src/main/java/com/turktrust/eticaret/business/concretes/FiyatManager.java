@@ -16,26 +16,21 @@ import com.turktrust.eticaret.entities.concretes.Fiyat;
 import com.turktrust.eticaret.entities.dtos.FiyatAddDto;
 
 @Service
-public class FiyatManager implements FiyatService{
-	
+public class FiyatManager implements FiyatService {
+
 	private FiyatDao fiyatDao;
 	private ModelMapperService modelMapperService;
+
 	@Autowired
-	public FiyatManager(FiyatDao fiyatDao,ModelMapperService modelMapperService) {
+	public FiyatManager(FiyatDao fiyatDao, ModelMapperService modelMapperService) {
 		super();
 		this.fiyatDao = fiyatDao;
-		this.modelMapperService= modelMapperService;
+		this.modelMapperService = modelMapperService;
 	}
 
 	@Override
 	public DataResult<List<Fiyat>> getAll() {
-		return new SuccessDataResult<List<Fiyat>>(this.fiyatDao.findAll(),"Data listelendi.");
-	}
-
-	@Override
-	public Result add(Fiyat fiyat) {
-		this.fiyatDao.save(fiyat);
-		return new SuccessResult("Fiyat eklendi.");
+		return new SuccessDataResult<List<Fiyat>>(this.fiyatDao.findAll(), "Data listelendi.");
 	}
 
 	@Override
@@ -44,7 +39,5 @@ public class FiyatManager implements FiyatService{
 		fiyatDao.save(fiyat);
 		return new SuccessResult("Fiyat eklendi.");
 	}
-	
-	
 
 }

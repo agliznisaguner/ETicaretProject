@@ -10,20 +10,19 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="adres")
+@Table(name = "adres")
 public class Adres {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="adres_id",nullable = false)
+	@Column(name = "adres_id", nullable = false)
 	private int adresId;
-	
+
 	@ManyToOne
-    @JoinColumn(name="musteri_id",referencedColumnName = "musteri_id")
-	//@JoinColumn(name="musteri_id")
+	@JoinColumn(name = "musteri_id", referencedColumnName = "musteri_id")
 	private Musteriler musteri;
-	
-	@Column(name="adres")
+
+	@Column(name = "adres")
 	private String adres;
 
 	public Adres(int id, Musteriler musteriId, String adres) {
@@ -32,7 +31,9 @@ public class Adres {
 		this.musteri = musteriId;
 		this.adres = adres;
 	}
-	public Adres() {}
+
+	public Adres() {
+	}
 
 	public int getId() {
 		return adresId;

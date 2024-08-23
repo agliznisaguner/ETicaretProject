@@ -1,9 +1,6 @@
 package com.turktrust.eticaret.entities.concretes;
 
 import java.util.List;
-
-import org.springframework.context.annotation.Lazy;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,31 +13,29 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor; 
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="siparisler")
+@Table(name = "siparisler")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Siparisler {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="siparis_id",nullable = false)
+	@Column(name = "siparis_id", nullable = false)
 	private int siparisId;
-	
+
 	@ManyToOne
-	@JoinColumn(name="musteri_id",referencedColumnName = "musteri_id")
+	@JoinColumn(name = "musteri_id", referencedColumnName = "musteri_id")
 	private Musteriler musteri;
-	
-	@Column(name="siparis_detay")
+
+	@Column(name = "siparis_detay")
 	private String siparisDetay;
-	
+
 	@ManyToMany
-	@JoinTable(name="urun_siparis", 
-	joinColumns = @JoinColumn(name="siparis_id"), 
-	inverseJoinColumns =@JoinColumn(name="urun_id") )
+	@JoinTable(name = "urun_siparis", joinColumns = @JoinColumn(name = "siparis_id"), inverseJoinColumns = @JoinColumn(name = "urun_id"))
 	private List<Urunler> urun;
 
 	public Siparisler(int id, Musteriler musteriId, String siparisDetay, List<Urunler> urunler) {
@@ -51,7 +46,8 @@ public class Siparisler {
 		this.urun = urunler;
 	}
 
-	public Siparisler() {}
+	public Siparisler() {
+	}
 
 	public int getId() {
 		return siparisId;
@@ -84,6 +80,5 @@ public class Siparisler {
 	public void setUrunler(List<Urunler> urunler) {
 		this.urun = urunler;
 	}
-
 
 }

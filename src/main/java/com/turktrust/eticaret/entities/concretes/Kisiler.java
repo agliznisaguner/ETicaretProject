@@ -15,32 +15,33 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @PrimaryKeyJoinColumn(name = "musteri_id", referencedColumnName = "musteri_id")
-@Table(name="kisiler")
-public class Kisiler extends Musteriler{
+@Table(name = "kisiler")
+public class Kisiler extends Musteriler {
 
-	@Column(name = "musteri_id", insertable = false, updatable = false,nullable = false)
+	@Column(name = "musteri_id", insertable = false, updatable = false, nullable = false)
 	private int musteriId;
-	
-	@Column(name="ad")
+
+	@Column(name = "ad")
 	private String ad;
-	
-	@Column(name="soyad")
+
+	@Column(name = "soyad")
 	private String soyad;
-	
-	@Column(name="tckimlik_no")
+
+	@Column(name = "tckimlik_no")
 	private int tckimlikNo;
 
-	public Kisiler(int id, int musteri_No, List<Adres> adresler, List<Siparisler> siparisler, List<Sepet> sepetler,List<Favoriler> favori,
-			String email, String password,
-			int musteri_Id, String ad, String soyad, int tckimlik_No) {
-		super(id, musteri_No, adresler, siparisler, sepetler,favori, email, password);
+	public Kisiler(int id, int musteri_No, List<Adres> adresler, List<Siparisler> siparisler, List<Sepet> sepetler,
+			List<Favoriler> favori, String email, String password, int musteri_Id, String ad, String soyad,
+			int tckimlik_No) {
+		super(id, musteri_No, adresler, siparisler, sepetler, favori, email, password);
 		this.musteriId = musteri_Id;
 		this.ad = ad;
 		this.soyad = soyad;
 		this.tckimlikNo = tckimlik_No;
 	}
-	public Kisiler() {}
-	
+
+	public Kisiler() {
+	}
 
 	public int getMusteri_Id() {
 		return musteriId;
@@ -73,7 +74,5 @@ public class Kisiler extends Musteriler{
 	public void setTckimlik_No(int tckimlik_No) {
 		this.tckimlikNo = tckimlik_No;
 	}
-	
-	
 
 }

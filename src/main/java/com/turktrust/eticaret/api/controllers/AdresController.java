@@ -20,27 +20,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/api/adres")
 public class AdresController {
-private AdresService adresService;
-	
+	private AdresService adresService;
+
 	@Autowired
 	public AdresController(AdresService urunService) {
-		super();
 		this.adresService = urunService;
 	}
-	
+
 	@GetMapping("/getAll")
-	public DataResult<List<Adres>> getAll(){
+	public DataResult<List<Adres>> getAll() {
 		return this.adresService.getAll();
-		}
-	@PostMapping("/add")
-	public Result add (@RequestBody Adres adres) {
-		return this.adresService.add(adres);
-		
 	}
+
+	@PostMapping("/add")
+	public Result add(@RequestBody Adres adres) {
+		return this.adresService.add(adres);
+
+	}
+
 	@PutMapping("/update")
 	public Result update(@RequestBody Adres adres) {
 		return this.adresService.update(adres);
 	}
+
 	@DeleteMapping("/delete")
 	public Result delete(@RequestBody Adres adres) {
 		return this.adresService.delete(adres);

@@ -17,23 +17,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/api/kategori")
 public class KategoriController {
-	
-private KategoriService kategoriService;
-	
+
+	private KategoriService kategoriService;
+
 	@Autowired
 	public KategoriController(KategoriService kategoriService) {
-		super();
 		this.kategoriService = kategoriService;
 	}
-	
+
 	@GetMapping("/getAll")
-	public DataResult<List<Kategori>> getAll(){
+	public DataResult<List<Kategori>> getAll() {
 		return this.kategoriService.getAll();
-		}
+	}
+
 	@PostMapping("/add")
-	public Result add (@RequestBody Kategori kategori) {
+	public Result add(@RequestBody Kategori kategori) {
 		return this.kategoriService.add(kategori);
-		
+
 	}
 
 }

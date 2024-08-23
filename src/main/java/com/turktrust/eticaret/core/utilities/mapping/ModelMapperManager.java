@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ModelMapperManager implements ModelMapperService{
-
-	
+public class ModelMapperManager implements ModelMapperService {
 
 	private final ModelMapper modelMapper;
 
@@ -18,12 +16,9 @@ public class ModelMapperManager implements ModelMapperService{
 		this.modelMapper = modelMapper;
 	}
 
-
 	public ModelMapper forDto() {
-	 this.modelMapper.getConfiguration().setAmbiguityIgnored(true).setMatchingStrategy(MatchingStrategies.LOOSE);
-	 return modelMapper;
+		this.modelMapper.getConfiguration().setAmbiguityIgnored(true).setMatchingStrategy(MatchingStrategies.LOOSE);
+		return modelMapper;
 	}
-	
-	
 
 }

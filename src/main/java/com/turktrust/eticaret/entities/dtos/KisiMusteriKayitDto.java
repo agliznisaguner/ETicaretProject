@@ -2,60 +2,61 @@ package com.turktrust.eticaret.entities.dtos;
 
 public class KisiMusteriKayitDto {
 
-		private String ad;
-	    private String soyad;
-	    private String email;
-	    private String password;
-	    private int tckimlikNo;
-	    
-	    public KisiMusteriKayitDto(String ad, String soyad, String email, String password, int tckimlikNo) {
-			super();
-			this.ad = ad;
-			this.soyad = soyad;
-			this.email = email;
-			this.password = password;
-			this.tckimlikNo = tckimlikNo;
-		}
-	    public KisiMusteriKayitDto() {}
+	private String ad;
+	private String soyad;
+	private String email;
+	private String password;
+	private int tckimlikNo;
 
-		public String getAd() {
-			return ad;
-		}
+	public KisiMusteriKayitDto(String ad, String soyad, String email, String password, int tckimlikNo) {
+		super();
+		this.ad = ad;
+		this.soyad = soyad;
+		this.email = email;
+		this.password = password;
+		this.tckimlikNo = tckimlikNo;
+	}
 
-		public void setAd(String ad) {
-			this.ad = ad;
-		}
+	public KisiMusteriKayitDto() {
+	}
 
-		public String getSoyad() {
-			return soyad;
-		}
+	public String getAd() {
+		return ad;
+	}
 
-		public void setSoyad(String soyad) {
-			this.soyad = soyad;
-		}
+	public void setAd(String ad) {
+		this.ad = ad;
+	}
 
-		public String getEmail() {
-			return email;
-		}
+	public String getSoyad() {
+		return soyad;
+	}
 
-		public void setEmail(String email) {
-			this.email = email;
-		}
+	public void setSoyad(String soyad) {
+		this.soyad = soyad;
+	}
 
-		public String getPassword() {
-			return password;
-		}
+	public String getEmail() {
+		return email;
+	}
 
-		public void setPassword(String password) {
-			this.password = password;
-		}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-		public int getTckimlikNo() {
-			return tckimlikNo;
-		}
+	public String getPassword() {
+		return password;
+	}
 
-		public void setTckimlikNo(int tckimlikNo) {
-			this.tckimlikNo = tckimlikNo;
-		}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getTckimlikNo() {
+		return tckimlikNo;
+	}
+
+	public void setTckimlikNo(int tckimlikNo) {
+		this.tckimlikNo = tckimlikNo;
+	}
 }
-
