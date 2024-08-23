@@ -1,6 +1,6 @@
 package com.turktrust.eticaret.entities.dtos;
 
-public class SaticiUrunKayitDto {
+public class RegisterUrunFromSaticiDto {
 
 	private String urunAdi;
 	private int stokSayisi;
@@ -9,7 +9,7 @@ public class SaticiUrunKayitDto {
 	private int kategoriId;
 	private int fiyatId;
 
-	public SaticiUrunKayitDto(String urunAdi, int stokSayisi, int saticiId, int markaId, int kategoriId, int fiyat) {
+	public RegisterUrunFromSaticiDto(String urunAdi, int stokSayisi, int saticiId, int markaId, int kategoriId, int fiyat) {
 		super();
 		this.urunAdi = urunAdi;
 		this.stokSayisi = stokSayisi;
@@ -19,7 +19,7 @@ public class SaticiUrunKayitDto {
 		this.fiyatId = fiyat;
 	}
 
-	public SaticiUrunKayitDto() {
+	public RegisterUrunFromSaticiDto() {
 	}
 
 	public String getUrunAdi() {

@@ -15,7 +15,7 @@ import com.turktrust.eticaret.core.utilities.results.SuccessDataResult;
 import com.turktrust.eticaret.core.utilities.results.SuccessResult;
 import com.turktrust.eticaret.dataAccess.abstracts.SaticiDao;
 import com.turktrust.eticaret.entities.concretes.Saticilar;
-import com.turktrust.eticaret.entities.dtos.SaticiKayitDto;
+import com.turktrust.eticaret.entities.dtos.RegisterSaticiDto;
 
 @Service
 public class SaticiManager implements SaticiService {
@@ -42,7 +42,7 @@ public class SaticiManager implements SaticiService {
 	}
 
 	@Override
-	public Result addFromDto(SaticiKayitDto saticiKayitDto) {
+	public Result addFromDto(RegisterSaticiDto saticiKayitDto) {
 		Saticilar satici = modelMapperService.forDto().map(saticiKayitDto, Saticilar.class);
 		saticiDao.save(satici);
 		return new SuccessResult("Satıcı eklendi.");

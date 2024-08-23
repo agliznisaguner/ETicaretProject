@@ -1,17 +1,17 @@
 package com.turktrust.eticaret.entities.dtos;
 
-public class KisiMusteriUpdateDto {
+public class UpdateKisiDto {
 
 	private String soyad;
 	private String email;
 
-	public KisiMusteriUpdateDto(String soyad, String email) {
+	public UpdateKisiDto(String soyad, String email) {
 		super();
 		this.soyad = soyad;
 		this.email = email;
 	}
 
-	public KisiMusteriUpdateDto() {
+	public UpdateKisiDto() {
 	}
 
 	public String getSoyad() {

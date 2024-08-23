@@ -10,7 +10,7 @@ import com.turktrust.eticaret.business.abstracts.SepetService;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.entities.concretes.Sepet;
-import com.turktrust.eticaret.entities.dtos.SepetUrunGetDto;
+import com.turktrust.eticaret.entities.dtos.GetUrunFromSepetDto;
 
 @RestController
 @RequestMapping("/api/sepet")
@@ -34,8 +34,8 @@ public class SepetController {
 	}
 
 	@GetMapping("/{sepetId}/urunler")
-	public ResponseEntity<SepetUrunGetDto> getSepetUrunler(@PathVariable int sepetId) {
-		SepetUrunGetDto sepetUrunGetDto = sepetService.getSepetUrunler(sepetId);
+	public ResponseEntity<GetUrunFromSepetDto> getSepetUrunler(@PathVariable int sepetId) {
+		GetUrunFromSepetDto sepetUrunGetDto = sepetService.getSepetUrunler(sepetId);
 		return ResponseEntity.ok(sepetUrunGetDto);
 	}
 }

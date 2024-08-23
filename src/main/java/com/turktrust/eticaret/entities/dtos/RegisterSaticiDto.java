@@ -1,15 +1,15 @@
 package com.turktrust.eticaret.entities.dtos;
 
-public class SaticiKayitDto {
+public class RegisterSaticiDto {
 
 	private String saticiFirmaAdi;
 
-	public SaticiKayitDto(String saticiFirmaAdi) {
+	public RegisterSaticiDto(String saticiFirmaAdi) {
 		super();
 		this.saticiFirmaAdi = saticiFirmaAdi;
 	}
 
-	public SaticiKayitDto() {
+	public RegisterSaticiDto() {
 	}
 
 	public String getSaticiFirmaAdi() {

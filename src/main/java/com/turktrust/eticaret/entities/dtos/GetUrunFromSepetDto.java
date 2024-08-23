@@ -2,10 +2,10 @@ package com.turktrust.eticaret.entities.dtos;
 
 import java.util.List;
 
-public class SepetUrunGetDto {
+public class GetUrunFromSepetDto {
 
 	private int sepetId;
-	private List<UrunDetayDto> urunler;
+	private List<UrunDetailsDto> urunler;
 
 	public int getSepetId() {
 		return sepetId;
@@ -15,21 +15,21 @@ public class SepetUrunGetDto {
 		this.sepetId = sepetId;
 	}
 
-	public List<UrunDetayDto> getUrunler() {
+	public List<UrunDetailsDto> getUrunler() {
 		return urunler;
 	}
 
-	public void setUrunler(List<UrunDetayDto> urunler) {
+	public void setUrunler(List<UrunDetailsDto> urunler) {
 		this.urunler = urunler;
 	}
 
-	public SepetUrunGetDto(int sepetId, List<UrunDetayDto> urunler) {
+	public GetUrunFromSepetDto(int sepetId, List<UrunDetailsDto> urunler) {
 		super();
 		this.sepetId = sepetId;
 		this.urunler = urunler;
 	}
 
-	public SepetUrunGetDto() {
+	public GetUrunFromSepetDto() {
 	}
 
 }

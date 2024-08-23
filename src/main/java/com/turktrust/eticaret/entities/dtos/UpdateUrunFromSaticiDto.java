@@ -1,19 +1,19 @@
 package com.turktrust.eticaret.entities.dtos;
 
-public class SaticiUrunUpdateDto {
+public class UpdateUrunFromSaticiDto {
 
 	private int saticiId;
 	private int fiyat;
 	private int stokSayisi;
 
-	public SaticiUrunUpdateDto(int fiyat, int stokSayisi, int saticiId) {
+	public UpdateUrunFromSaticiDto(int fiyat, int stokSayisi, int saticiId) {
 		super();
 		this.fiyat = fiyat;
 		this.stokSayisi = stokSayisi;
 		this.saticiId = saticiId;
 	}
 
-	public SaticiUrunUpdateDto() {
+	public UpdateUrunFromSaticiDto() {
 	}
 
 	public int getFiyat() {

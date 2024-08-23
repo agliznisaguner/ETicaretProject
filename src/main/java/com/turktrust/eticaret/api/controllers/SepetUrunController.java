@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.turktrust.eticaret.business.abstracts.SepetUrunService;
 import com.turktrust.eticaret.core.utilities.results.Result;
-import com.turktrust.eticaret.entities.dtos.MusteriSepetUrunAddDto;
+import com.turktrust.eticaret.entities.dtos.AddUrunToMusteriSepetDto;
 
 @RestController
 @RequestMapping("/api/Sepet_Urun")
@@ -21,7 +21,7 @@ public class SepetUrunController {
 	}
 
 	@PostMapping("/MusteriSepetUrunAdd")
-	public Result MusteriSepetUrunAdd(@RequestBody MusteriSepetUrunAddDto musteriSepetUrunAddDto) {
+	public Result MusteriSepetUrunAdd(@RequestBody AddUrunToMusteriSepetDto musteriSepetUrunAddDto) {
 		return sepet_UrunService.addUrunToSepet(musteriSepetUrunAddDto);
 	}
 

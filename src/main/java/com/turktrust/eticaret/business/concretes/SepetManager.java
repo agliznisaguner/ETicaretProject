@@ -15,8 +15,8 @@ import com.turktrust.eticaret.core.utilities.results.SuccessResult;
 import com.turktrust.eticaret.dataAccess.abstracts.SepetDao;
 import com.turktrust.eticaret.dataAccess.abstracts.SiparisDao;
 import com.turktrust.eticaret.entities.concretes.Sepet;
-import com.turktrust.eticaret.entities.dtos.SepetUrunGetDto;
-import com.turktrust.eticaret.entities.dtos.UrunDetayDto;
+import com.turktrust.eticaret.entities.dtos.GetUrunFromSepetDto;
+import com.turktrust.eticaret.entities.dtos.UrunDetailsDto;
 
 @Service
 public class SepetManager implements SepetService {
@@ -43,14 +43,14 @@ public class SepetManager implements SepetService {
 	}
 
 	@Override
-	public SepetUrunGetDto getSepetUrunler(int sepetId) {
+	public GetUrunFromSepetDto getSepetUrunler(int sepetId) {
 		Sepet sepet = sepetDao.findById(sepetId).orElseThrow(() -> new RuntimeException("Sepet bulunamadı"));
 
-		SepetUrunGetDto sepetDto = new SepetUrunGetDto();
+		GetUrunFromSepetDto sepetDto = new GetUrunFromSepetDto();
 		sepetDto.setSepetId(sepet.getId());
 
-		List<UrunDetayDto> urunDetayDtos = sepet.getUrun().stream().map(urun -> {
-			UrunDetayDto urunDto = new UrunDetayDto();
+		List<UrunDetailsDto> urunDetayDtos = sepet.getUrun().stream().map(urun -> {
+			UrunDetailsDto urunDto = new UrunDetailsDto();
 			urunDto.setUrunId(urun.getId());
 
 			if (!urun.getFiyatlar().isEmpty()) {

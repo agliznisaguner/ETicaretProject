@@ -1,6 +1,6 @@
 package com.turktrust.eticaret.entities.dtos;
 
-public class FiyatAddDto {
+public class AddFiyatDto {
 
 	private int fiyatId;
 	private int urunId;
@@ -30,14 +30,14 @@ public class FiyatAddDto {
 		this.urunFiyat = urunFiyat;
 	}
 
-	public FiyatAddDto(int fiyatId, int urunId, int urunFiyat) {
+	public AddFiyatDto(int fiyatId, int urunId, int urunFiyat) {
 		super();
 		this.fiyatId = fiyatId;
 		this.urunId = urunId;
 		this.urunFiyat = urunFiyat;
 	}
 
-	public FiyatAddDto() {
+	public AddFiyatDto() {
 	}
 
 }

@@ -15,9 +15,9 @@ import com.turktrust.eticaret.business.abstracts.KisiService;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.entities.concretes.Kisiler;
-import com.turktrust.eticaret.entities.dtos.KisiGetDto;
-import com.turktrust.eticaret.entities.dtos.KisiMusteriKayitDto;
-import com.turktrust.eticaret.entities.dtos.KisiMusteriUpdateDto;
+import com.turktrust.eticaret.entities.dtos.GetKisiDto;
+import com.turktrust.eticaret.entities.dtos.RegisterKisiDto;
+import com.turktrust.eticaret.entities.dtos.UpdateKisiDto;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -38,7 +38,7 @@ public class KisiController {
 	}
 
 	@PostMapping("/add")
-	public ResponseEntity<String> addKisi(@RequestBody KisiMusteriKayitDto dto) {
+	public ResponseEntity<String> addKisi(@RequestBody RegisterKisiDto dto) {
 		Result result = kisiService.addFromDto(dto);
 		if (result.isSuccess()) {
 			return ResponseEntity.ok(result.getMessage());
@@ -47,7 +47,7 @@ public class KisiController {
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<String> updateKisi(@PathVariable int id, @RequestBody KisiMusteriUpdateDto dto) {
+	public ResponseEntity<String> updateKisi(@PathVariable int id, @RequestBody UpdateKisiDto dto) {
 		Result result = kisiService.updateFromDto(id, dto);
 		if (result.isSuccess()) {
 			return ResponseEntity.ok(result.getMessage());
@@ -55,9 +55,9 @@ public class KisiController {
 		return ResponseEntity.badRequest().body(result.getMessage());
 	}
 
-	@GetMapping("/KisiGetAll")
-	public ResponseEntity<DataResult<List<KisiGetDto>>> getAllKisiler() {
-		DataResult<List<KisiGetDto>> result = kisiService.getAllKisiler();
+	@GetMapping("/getKisi")
+	public ResponseEntity<DataResult<List<GetKisiDto>>> getAllKisiler() {
+		DataResult<List<GetKisiDto>> result = kisiService.getAllKisiler();
 		if (result.isSuccess()) {
 			return ResponseEntity.ok(result);
 		}

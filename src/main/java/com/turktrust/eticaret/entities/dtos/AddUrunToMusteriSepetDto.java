@@ -1,6 +1,6 @@
 package com.turktrust.eticaret.entities.dtos;
 
-public class MusteriSepetUrunAddDto {
+public class AddUrunToMusteriSepetDto {
 
 	private int musteriId;
 	private int urunId;
@@ -21,13 +21,13 @@ public class MusteriSepetUrunAddDto {
 		this.urunId = urunId;
 	}
 
-	public MusteriSepetUrunAddDto(int musteriId, int urunId) {
+	public AddUrunToMusteriSepetDto(int musteriId, int urunId) {
 		super();
 		this.musteriId = musteriId;
 		this.urunId = urunId;
 	}
 
-	public MusteriSepetUrunAddDto() {
+	public AddUrunToMusteriSepetDto() {
 	}
 
 }

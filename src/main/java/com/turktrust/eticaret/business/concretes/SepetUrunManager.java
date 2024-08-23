@@ -18,7 +18,7 @@ import com.turktrust.eticaret.entities.concretes.Musteriler;
 import com.turktrust.eticaret.entities.concretes.Sepet;
 import com.turktrust.eticaret.entities.concretes.Sepet_Urun;
 import com.turktrust.eticaret.entities.concretes.Urunler;
-import com.turktrust.eticaret.entities.dtos.MusteriSepetUrunAddDto;
+import com.turktrust.eticaret.entities.dtos.AddUrunToMusteriSepetDto;
 
 @Service
 public class SepetUrunManager implements SepetUrunService {
@@ -41,7 +41,7 @@ public class SepetUrunManager implements SepetUrunService {
 
 	@Override
 	@Transactional
-	public Result addUrunToSepet(MusteriSepetUrunAddDto musteriSepetUrunAddDto) {
+	public Result addUrunToSepet(AddUrunToMusteriSepetDto musteriSepetUrunAddDto) {
 		int musteriId = musteriSepetUrunAddDto.getMusteriId();
 		int urunId = musteriSepetUrunAddDto.getUrunId();
 

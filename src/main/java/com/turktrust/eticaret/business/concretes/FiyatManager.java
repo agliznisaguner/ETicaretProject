@@ -13,7 +13,7 @@ import com.turktrust.eticaret.core.utilities.results.SuccessDataResult;
 import com.turktrust.eticaret.core.utilities.results.SuccessResult;
 import com.turktrust.eticaret.dataAccess.abstracts.FiyatDao;
 import com.turktrust.eticaret.entities.concretes.Fiyat;
-import com.turktrust.eticaret.entities.dtos.FiyatAddDto;
+import com.turktrust.eticaret.entities.dtos.AddFiyatDto;
 
 @Service
 public class FiyatManager implements FiyatService {
@@ -34,7 +34,7 @@ public class FiyatManager implements FiyatService {
 	}
 
 	@Override
-	public Result addFromFiyatAddDto(FiyatAddDto fiyatAddDto) {
+	public Result addFromFiyatAddDto(AddFiyatDto fiyatAddDto) {
 		Fiyat fiyat = modelMapperService.forDto().map(fiyatAddDto, Fiyat.class);
 		fiyatDao.save(fiyat);
 		return new SuccessResult("Fiyat eklendi.");

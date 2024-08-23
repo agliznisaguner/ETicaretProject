@@ -14,9 +14,9 @@ import com.turktrust.eticaret.core.utilities.results.SuccessDataResult;
 import com.turktrust.eticaret.core.utilities.results.SuccessResult;
 import com.turktrust.eticaret.dataAccess.abstracts.KisiDao;
 import com.turktrust.eticaret.entities.concretes.Kisiler;
-import com.turktrust.eticaret.entities.dtos.KisiGetDto;
-import com.turktrust.eticaret.entities.dtos.KisiMusteriKayitDto;
-import com.turktrust.eticaret.entities.dtos.KisiMusteriUpdateDto;
+import com.turktrust.eticaret.entities.dtos.GetKisiDto;
+import com.turktrust.eticaret.entities.dtos.RegisterKisiDto;
+import com.turktrust.eticaret.entities.dtos.UpdateKisiDto;
 
 @Service
 public class KisiManager implements KisiService {
@@ -42,13 +42,13 @@ public class KisiManager implements KisiService {
 	}
 
 	@Override
-	public Result addFromDto(KisiMusteriKayitDto dto) {
+	public Result addFromDto(RegisterKisiDto dto) {
 		Kisiler kisi = modelMapperService.forDto().map(dto, Kisiler.class);
 		return add(kisi);
 	}
 
 	@Override
-	public Result updateFromDto(int id, KisiMusteriUpdateDto dto) {
+	public Result updateFromDto(int id, UpdateKisiDto dto) {
 		Kisiler existingKisi = kisiDao.findById(id).orElseThrow(() -> new IllegalArgumentException("Kişi bulunamadı."));
 
 		modelMapperService.forDto().map(dto, existingKisi);
@@ -57,10 +57,10 @@ public class KisiManager implements KisiService {
 	}
 
 	@Override
-	public DataResult<List<KisiGetDto>> getAllKisiler() {
+	public DataResult<List<GetKisiDto>> getAllKisiler() {
 		List<Kisiler> kisilerList = kisiDao.findAll();
-		List<KisiGetDto> dtoList = kisilerList.stream()
-				.map(kisi -> modelMapperService.forDto().map(kisi, KisiGetDto.class)).collect(Collectors.toList());
+		List<GetKisiDto> dtoList = kisilerList.stream()
+				.map(kisi -> modelMapperService.forDto().map(kisi, GetKisiDto.class)).collect(Collectors.toList());
 		return new SuccessDataResult<>(dtoList, "Tüm kişiler getirildi.");
 	}
 

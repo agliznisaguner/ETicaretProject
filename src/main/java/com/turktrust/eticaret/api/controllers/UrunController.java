@@ -12,9 +12,9 @@ import com.turktrust.eticaret.business.abstracts.UrunService;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.entities.concretes.Urunler;
-import com.turktrust.eticaret.entities.dtos.SaticiUrunKayitDto;
-import com.turktrust.eticaret.entities.dtos.SaticiUrunUpdateDto;
-import com.turktrust.eticaret.entities.dtos.UrunWithKategoriDto;
+import com.turktrust.eticaret.entities.dtos.RegisterUrunFromSaticiDto;
+import com.turktrust.eticaret.entities.dtos.UpdateUrunFromSaticiDto;
+import com.turktrust.eticaret.entities.dtos.GetUrunWithKategoriDto;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -37,7 +37,6 @@ public class UrunController {
 	@PostMapping("/add")
 	public Result add(@RequestBody Urunler urun) {
 		return this.urunService.add(urun);
-
 	}
 
 	@GetMapping("/getByUrunAdi")
@@ -77,17 +76,17 @@ public class UrunController {
 	}
 
 	@GetMapping("/getUrunWithKategoriDetails")
-	public DataResult<List<UrunWithKategoriDto>> getUrunWithKategoriDetails() {
-		return this.urunService.getUrunWithKategoriDetails();
+	public DataResult<List<GetUrunWithKategoriDto>> getUrunWithKategori() {
+		return this.urunService.getUrunWithKategori();
 	}
 
 	@PostMapping("/addUrunForSatici")
-	public Result addUrunForSatici(@RequestBody SaticiUrunKayitDto saticiUrunKayitDto) {
+	public Result addUrunForSatici(@RequestBody RegisterUrunFromSaticiDto saticiUrunKayitDto) {
 		return this.urunService.addUrunForSatici(saticiUrunKayitDto);
 	}
 
-	@PutMapping("/updateUrunForSatici")
-	public Result saticiUrunUpdate(@RequestBody SaticiUrunUpdateDto saticiUrunUpdateDto, int saticiId, int urunId) {
+	@PutMapping("/updateUrunFromSatici")
+	public Result saticiUrunUpdate(@RequestBody UpdateUrunFromSaticiDto saticiUrunUpdateDto, int saticiId, int urunId) {
 		return this.urunService.saticiUrunUpdate(saticiUrunUpdateDto, saticiId, urunId);
 	}
 

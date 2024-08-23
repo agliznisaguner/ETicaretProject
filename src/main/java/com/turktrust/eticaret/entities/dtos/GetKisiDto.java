@@ -1,19 +1,19 @@
 package com.turktrust.eticaret.entities.dtos;
 
-public class KisiGetDto {
+public class GetKisiDto {
 
 	private String ad;
 	private String soyad;
 	private String email;
 
-	public KisiGetDto(String ad, String soyad, String email) {
+	public GetKisiDto(String ad, String soyad, String email) {
 		super();
 		this.ad = ad;
 		this.soyad = soyad;
 		this.email = email;
 	}
 
-	public KisiGetDto() {
+	public GetKisiDto() {
 	}
 
 	public String getAd() {

@@ -15,7 +15,7 @@ import com.turktrust.eticaret.business.abstracts.SaticiService;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.entities.concretes.Saticilar;
-import com.turktrust.eticaret.entities.dtos.SaticiKayitDto;
+import com.turktrust.eticaret.entities.dtos.RegisterSaticiDto;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -70,7 +70,7 @@ public class SaticiController {
 	}
 
 	@PostMapping("/registerSatici")
-	public ResponseEntity<String> registerSatici(@RequestBody SaticiKayitDto dto) {
+	public ResponseEntity<String> registerSatici(@RequestBody RegisterSaticiDto dto) {
 		Result result = saticiService.addFromDto(dto);
 		if (result.isSuccess()) {
 			return ResponseEntity.ok(result.getMessage());

@@ -20,9 +20,9 @@ import com.turktrust.eticaret.dataAccess.abstracts.UrunDao;
 import com.turktrust.eticaret.entities.concretes.Fiyat;
 import com.turktrust.eticaret.entities.concretes.Saticilar;
 import com.turktrust.eticaret.entities.concretes.Urunler;
-import com.turktrust.eticaret.entities.dtos.SaticiUrunKayitDto;
-import com.turktrust.eticaret.entities.dtos.SaticiUrunUpdateDto;
-import com.turktrust.eticaret.entities.dtos.UrunWithKategoriDto;
+import com.turktrust.eticaret.entities.dtos.RegisterUrunFromSaticiDto;
+import com.turktrust.eticaret.entities.dtos.UpdateUrunFromSaticiDto;
+import com.turktrust.eticaret.entities.dtos.GetUrunWithKategoriDto;
 
 import jakarta.transaction.Transactional;
 
@@ -110,8 +110,8 @@ public class UrunManager implements UrunService {
 	}
 
 	@Override
-	public DataResult<List<UrunWithKategoriDto>> getUrunWithKategoriDetails() {
-		return new SuccessDataResult<List<UrunWithKategoriDto>>(this.urunDao.getUrunWithKategoriDetails(),
+	public DataResult<List<GetUrunWithKategoriDto>> getUrunWithKategori() {
+		return new SuccessDataResult<List<GetUrunWithKategoriDto>>(this.urunDao.getUrunWithKategori(),
 				"Data listelendi");
 	}
 
@@ -123,7 +123,7 @@ public class UrunManager implements UrunService {
 
 	@Override
 	@Transactional
-	public Result addUrunForSatici(SaticiUrunKayitDto saticiUrunKayitDto) {
+	public Result addUrunForSatici(RegisterUrunFromSaticiDto saticiUrunKayitDto) {
 		Urunler urun = modelMapperService.forDto().map(saticiUrunKayitDto, Urunler.class);
 		urun.setFiyatlar((List<Fiyat>) fiyatDao.findById(saticiUrunKayitDto.getFiyatId())
 				.orElseThrow(() -> new IllegalArgumentException("Fiyat Bulunamadı")));
@@ -140,7 +140,7 @@ public class UrunManager implements UrunService {
 
 	@Override
 	@Transactional
-	public Result saticiUrunUpdate(SaticiUrunUpdateDto saticiUrunUpdateDto, int saticiId, int urunId) {
+	public Result saticiUrunUpdate(UpdateUrunFromSaticiDto saticiUrunUpdateDto, int saticiId, int urunId) {
 		Saticilar existingSatici = saticiDao.findById(saticiId)
 				.orElseThrow(() -> new IllegalArgumentException("Satıcı bulunamadı."));
 

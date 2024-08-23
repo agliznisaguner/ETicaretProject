@@ -5,9 +5,9 @@ import java.util.List;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.entities.concretes.Urunler;
-import com.turktrust.eticaret.entities.dtos.SaticiUrunKayitDto;
-import com.turktrust.eticaret.entities.dtos.SaticiUrunUpdateDto;
-import com.turktrust.eticaret.entities.dtos.UrunWithKategoriDto;
+import com.turktrust.eticaret.entities.dtos.RegisterUrunFromSaticiDto;
+import com.turktrust.eticaret.entities.dtos.UpdateUrunFromSaticiDto;
+import com.turktrust.eticaret.entities.dtos.GetUrunWithKategoriDto;
 
 public interface UrunService {
 
@@ -35,11 +35,11 @@ public interface UrunService {
 
 	DataResult<List<Urunler>> getBySatici_SaticiFirmaAdiIn(List<String> saticiFirmaAdi);
 
-	DataResult<List<UrunWithKategoriDto>> getUrunWithKategoriDetails();
+	DataResult<List<GetUrunWithKategoriDto>> getUrunWithKategori();
 
-	Result addUrunForSatici(SaticiUrunKayitDto saticiUrunKayitDto);
+	Result addUrunForSatici(RegisterUrunFromSaticiDto saticiUrunKayitDto);
 
-	Result saticiUrunUpdate(SaticiUrunUpdateDto saticiUrunUpdateDto, int saticiId, int urunId);
+	Result saticiUrunUpdate(UpdateUrunFromSaticiDto saticiUrunUpdateDto, int saticiId, int urunId);
 
 
 }

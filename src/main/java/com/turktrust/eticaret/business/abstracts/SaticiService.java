@@ -5,7 +5,7 @@ import java.util.List;
 import com.turktrust.eticaret.core.utilities.results.DataResult;
 import com.turktrust.eticaret.core.utilities.results.Result;
 import com.turktrust.eticaret.entities.concretes.Saticilar;
-import com.turktrust.eticaret.entities.dtos.SaticiKayitDto;
+import com.turktrust.eticaret.entities.dtos.RegisterSaticiDto;
 
 public interface SaticiService {
 
@@ -15,7 +15,7 @@ public interface SaticiService {
 
 	Result add(Saticilar satici);
 
-	Result addFromDto(SaticiKayitDto saticiKayitDto);
+	Result addFromDto(RegisterSaticiDto saticiKayitDto);
 
 	DataResult<Saticilar> getById(int id);
 

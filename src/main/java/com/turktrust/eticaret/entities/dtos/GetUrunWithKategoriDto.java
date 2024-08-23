@@ -1,20 +1,20 @@
 package com.turktrust.eticaret.entities.dtos;
 
 //data transfer object
-public class UrunWithKategoriDto {
+public class GetUrunWithKategoriDto {
 
 	private int id;
 	private String urunAdi;
 	private String kategoriAdi;
 
-	public UrunWithKategoriDto(int id, String urunAdi, String kategoriAdi) {
+	public GetUrunWithKategoriDto(int id, String urunAdi, String kategoriAdi) {
 		super();
 		this.id = id;
 		this.urunAdi = urunAdi;
 		this.kategoriAdi = kategoriAdi;
 	}
 
-	public UrunWithKategoriDto() {
+	public GetUrunWithKategoriDto() {
 	}
 
 	public int getId() {

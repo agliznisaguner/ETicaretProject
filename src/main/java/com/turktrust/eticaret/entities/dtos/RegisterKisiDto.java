@@ -1,6 +1,6 @@
 package com.turktrust.eticaret.entities.dtos;
 
-public class KisiMusteriKayitDto {
+public class RegisterKisiDto {
 
 	private String ad;
 	private String soyad;
@@ -8,7 +8,7 @@ public class KisiMusteriKayitDto {
 	private String password;
 	private int tckimlikNo;
 
-	public KisiMusteriKayitDto(String ad, String soyad, String email, String password, int tckimlikNo) {
+	public RegisterKisiDto(String ad, String soyad, String email, String password, int tckimlikNo) {
 		super();
 		this.ad = ad;
 		this.soyad = soyad;
@@ -17,7 +17,7 @@ public class KisiMusteriKayitDto {
 		this.tckimlikNo = tckimlikNo;
 	}
 
-	public KisiMusteriKayitDto() {
+	public RegisterKisiDto() {
 	}
 
 	public String getAd() {
