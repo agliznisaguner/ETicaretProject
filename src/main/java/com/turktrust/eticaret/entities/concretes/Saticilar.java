@@ -18,8 +18,8 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "saticilar")
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Data
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "urunler" })
 public class Saticilar {

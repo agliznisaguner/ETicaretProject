@@ -14,8 +14,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor; 
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Data
 @Table(name="markalar")
 public class Markalar {

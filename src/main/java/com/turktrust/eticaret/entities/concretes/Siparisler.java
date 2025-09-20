@@ -17,8 +17,8 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "siparisler")
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Data
 public class Siparisler {
 

@@ -18,8 +18,8 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "sepet")
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Data
 public class Sepet {
 

@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "favoriler")
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Data
 public class Favoriler {
 	@Id

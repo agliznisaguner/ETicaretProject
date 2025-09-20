@@ -11,8 +11,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Data
 @PrimaryKeyJoinColumn(name = "musteri_id", referencedColumnName = "musteri_id")
 @Table(name = "kisiler")

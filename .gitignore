@@ -33,3 +33,7 @@ build/
 ### VS Code ###
 .vscode/
 /.apt_generated_tests/
+
+###Docker / env ###
+.env
+backup.dump

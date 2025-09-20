@@ -18,8 +18,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Data
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "musteriler")

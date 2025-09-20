@@ -18,8 +18,8 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "kategori")
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Data
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "urunler" })
 public class Kategori {

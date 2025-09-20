@@ -30,3 +30,38 @@ This project is an **e-commerce application** backend developed using **Spring B
 - **models/:** Entity classes representing database tables.
 - **src/main/resources:** Contains configuration files.
 - **application.properties:** Configuration file for the application.
+
+## Setup with Docker
+
+This project uses Docker Compose to run both PostgreSQL and the Spring Boot application in separate containers.
+
+### 1. Environment Variables
+
+Sensitive data like database passwords are stored in a `.env` file. A sample file `.env.example` is provided.
+
+#### Steps:
+
+1. Copy `.env.example` to create your own `.env`:
+
+```bash
+cp .env.example .env
+
+2. Open .env and update the values if needed:
+
+POSTGRES_USER=your_postgres_user
+POSTGRES_PASSWORD=your_postgres_password
+POSTGRES_DB=your_database_name
+SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/your_database_name
+SPRING_DATASOURCE_USERNAME=your_postgres_user
+SPRING_DATASOURCE_PASSWORD=your_postgres_password
+
+3. Start the containers using Docker Compose:
+
+docker-compose up -d --build 
+
+4. Accessing the Application
+
+http://localhost:8080/swagger-ui/index.html
+
+
+
