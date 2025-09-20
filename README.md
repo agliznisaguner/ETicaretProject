@@ -45,23 +45,24 @@ Sensitive data like database passwords are stored in a `.env` file. A sample fil
 
 ```bash
 cp .env.example .env
+```
 
 2. Open .env and update the values if needed:
-
+```bash
 POSTGRES_USER=your_postgres_user
 POSTGRES_PASSWORD=your_postgres_password
 POSTGRES_DB=your_database_name
 SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/your_database_name
 SPRING_DATASOURCE_USERNAME=your_postgres_user
 SPRING_DATASOURCE_PASSWORD=your_postgres_password
-
+```
 3. Start the containers using Docker Compose:
-
+```bash
 docker-compose up -d --build 
-
+```
 4. Accessing the Application
-
+```bash
 http://localhost:8080/swagger-ui/index.html
-
+```
 
 
